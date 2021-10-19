@@ -1,5 +1,6 @@
 /**
  * @typedef {object} Goal
+ * @property {number} id
  * @property {string} name
  * @property {number} days
  * @property {Array} isAchieve
@@ -7,6 +8,9 @@
  */
 
 export default class Goal {
+  /** @type {number} */
+  #id;
+
   /** @type {string} */
   #name;
 
@@ -20,7 +24,8 @@ export default class Goal {
   #rewards;
 
   /** @type {(name: string, days: number) => Goal}} */
-  constructor(name, days) {
+  constructor(id, name, days) {
+    this.#id = id;
     this.#name = name;
     this.#days = days;
     this.#isAchieve = Array.from({ length: days }, () => false);
@@ -33,6 +38,7 @@ export default class Goal {
    */
   get data() {
     return {
+      id: this.#id,
       name: this.#name,
       days: this.#days,
       isAchieve: [...this.#isAchieve],
@@ -59,7 +65,9 @@ export default class Goal {
 
 // Goal object
 // {
+//   id: 1,
 // 	name: '다이어트',
 // 	days: 7,  // num of challenge days
-// 	isSuccess: [false, false, false, true, false, false, false],
+// 	isAchieve: [false, false, false, true, false, false, false],
+//   rewards: '야식으로 치킨 조지기',
 // }
