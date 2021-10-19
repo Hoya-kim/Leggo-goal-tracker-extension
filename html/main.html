@@ -12,6 +12,7 @@
     />
     <link rel="stylesheet" href=".././css/nav.css" />
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/goalGrid.css" />
   </head>
   <body>
     <header>
@@ -95,8 +96,49 @@
           </ul>
         </div>
       </div>
-      <div class="goal-grid">
-        <!-- goal-grid -->
+      <div class="goal-grid-container">
+        <div class="goal-grid">
+          <!-- goal-grid -->
+          <div id="goal-grid-start" class="goal-grid-item end-point">Start</div>
+          <button class="goal-grid-item day-button">
+            1
+            <div class="day-button-checked checked"></div>
+          </button>
+          <button class="goal-grid-item day-button">
+            2
+            <div class="day-button-checked"></div>
+          </button>
+          <button class="goal-grid-item day-button">
+            3
+            <div class="day-button-checked"></div>
+          </button>
+          <button class="goal-grid-item day-button">
+            4
+            <div class="day-button-checked"></div>
+          </button>
+          <button class="goal-grid-item day-button">
+            5
+            <div class="day-button-checked"></div>
+          </button>
+          <button class="goal-grid-item day-button">
+            6
+            <div class="day-button-checked"></div>
+          </button>
+          <button class="goal-grid-item day-button">
+            7
+            <div class="day-button-checked"></div>
+          </button>
+          <div class="goal-grid-item end-point">Finish</div>
+        </div>
+        <div class="goal-rewards">
+          <label for="goal-rewards">Rewards: </label>
+          <input
+            type="text"
+            name="goal-rewards"
+            id="goal-rewards"
+            placeholder="보상으로 폭식하기!🍖 (Enter ⮐)"
+          />
+        </div>
       </div>
     </main>
   </body>

@@ -1,0 +1,83 @@
+:root {
+  --primary-color: #ffc900;
+}
+body {
+  box-sizing: border-box;
+}
+
+.goal-grid-container {
+  width: 540px;
+}
+
+.goal-grid {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: repeat(9, 1fr);
+  --grid-item-width: 60px;
+  width: 100%;
+}
+.goal-grid-item {
+  padding: 0;
+  background-color: transparent;
+  text-align: center;
+
+  width: var(--grid-item-width);
+  height: calc(var(--grid-item-width) * 1.25);
+}
+.day-button {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  font-size: 0.85rem;
+  padding-top: 5px;
+  border: solid 1px #ccc;
+}
+.day-button:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+.end-point {
+  cursor: default;
+  background-color: var(--primary-color);
+  line-height: var(--grid-item-width);
+  height: var(--grid-item-width);
+  border-radius: 50%;
+  align-self: center;
+  color: #fff;
+}
+.day-button-checked {
+  position: absolute;
+  z-index: -1;
+  width: calc(var(--grid-item-width) * 0.55);
+  height: calc(var(--grid-item-width) * 0.55);
+  left: 50%;
+  top: 65%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: transparent;
+}
+.checked {
+  background-color: #fbe389;
+}
+
+.goal-rewards {
+  display: inline-block;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #000;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.goal-rewards > input {
+  border: 0;
+  outline: none;
+  width: 75%;
+}
+
+.goal-rewards > input::placeholder {
+  color: #ccc;
+}
