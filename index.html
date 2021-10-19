@@ -11,29 +11,28 @@
     <header class="header">
       <h1>
         <a href="./index.html">
-          <img class="logo" src="./images/logo.png" alt="Let's Go LEGGO">
+          <img class="logo" src="./images/logo.png" alt="Let's Go LEGGO" />
         </a>
       </h1>
     </header>
     <main class="main">
-      <section class="avatar">
-        <div class="avatar-container">
-          <div class="avatar-face"></div>
-          <div class="avatar-eyes"></div>
-          <div class="avatar-mouth"></div>
-        </div>
-      </section>
-      <section class="nickname">
-        <label for="nickname">닉네임</label>
-        <input type="text" id="nickname" readonly value="향긋한 다이아몬드">
-      </section>
-      <button class="reroll">
-        다시 만들기
-      </button>
-      <button class="sumit">
-        확인
-      </button>
+      <div class="login-container">
+        <section class="avatar">
+          <div class="avatar-container">
+            <div class="avatar-horn"></div>
+            <div class="avatar-face"></div>
+            <div class="avatar-eyes"></div>
+            <div class="avatar-mouth"></div>
+          </div>
+        </section>
+        <section class="nickname">
+          <!-- <label for="nickname">닉네임</label> -->
+          <input type="text" id="nickname" readonly value="향긋한 다이아몬드" />
+        </section>
+        <button class="submit">확인</button>
+        <button class="reroll">다시 만들기</button>
+      </div>
     </main>
-    <script type="module" src="main.js"></script>
+    <script type="module" src="./js/login.js"></script>
   </body>
 </html>
