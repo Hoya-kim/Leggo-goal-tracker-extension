@@ -1,14 +1,66 @@
+:root{
+    --avatar-container-width: 300px;
+    --eyes-width: 35%;
+    --mouth-width: 25%;
+}
 
 .logo{
     max-width: 100px;
     width: 30%;
 }
 
+.main{
+    text-align: center;
+}
 
-
+.avatar{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-item: center;
+}
 
 .avatar-container{
-    width: 300px;
-    height: 300px;
+    position: relative;
+    display: flex;
+    width: var(--avatar-container-width);
+    height: var(--avatar-container-width);
     background-color: coral;
+    border-radius: 50%;
+}
+
+.avatar-face{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    background-color: rgb(230, 240, 94);
+    border-radius: 20%;
+}
+
+
+.avatar-eyes{
+    background: no-repeat url(../images/avatar/eyes1.png);
+    background-size: 100%;
+    width: var(--eyes-width);
+    height: calc(220 * var(--eyes-width)/792);
+    z-index: 10;
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.avatar-mouth{
+    background: no-repeat url(../images/avatar/mouth3.png);
+    background-size: 100%;
+    width: var(--mouth-width);
+    height: calc(270 * var(--mouth-width)/545);
+    z-index: 10;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
