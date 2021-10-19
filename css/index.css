@@ -1,66 +1,143 @@
-:root{
-    --avatar-container-width: 300px;
-    --eyes-width: 35%;
-    --mouth-width: 25%;
+:root {
+  --light-yellow: #ffe37c;
+  --dark-yellow: #ffc900;
+  --light-blue: #b7d4ff;
+  --dark-blue: #6fa9ff;
+  --light-pink: #ffb4cb;
+  --dark-pink: #ff81a6;
+  --light-green: #75ffc3;
+  --dark-green: #21d889;
+  --gray: #ededed;
+
+  --avatar-container-width: 300px;
+  --eyes-width: 35%;
+  --mouth-width: 25%;
+
+  --face-color: var(--light-yellow);
+  --face-border-color: var(--dark-yellow);
+
+  /* --face-color: var(--light-blue);
+    --face-border-color: var(--dark-blue); */
+
+  /* --face-color: var(--light-pink);
+    --face-border-color: var(--dark-pink);  */
+
+  /* --face-color: var(--light-green);
+    --face-border-color: var(--dark-green); */
 }
 
-.logo{
-    max-width: 100px;
-    width: 30%;
+/* 헤더 */
+.logo {
+  max-width: 100px;
+  width: 30%;
 }
 
-.main{
-    text-align: center;
+/* 메인 */
+
+.login-container {
+  margin: 0 auto;
+  width: var(--avatar-container-width);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.avatar{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-item: center;
+/* 아바타 섹션 */
+.avatar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-item: center;
 }
 
-.avatar-container{
-    position: relative;
-    display: flex;
-    width: var(--avatar-container-width);
-    height: var(--avatar-container-width);
-    background-color: coral;
-    border-radius: 50%;
+.avatar-container {
+  position: relative;
+  display: flex;
+  width: var(--avatar-container-width);
+  height: var(--avatar-container-width);
+  background-color: #fff;
+  border-radius: 50%;
 }
 
-.avatar-face{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    height: 60%;
-    background-color: rgb(230, 240, 94);
-    border-radius: 20%;
+.avatar-horn {
+  top: 22%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20%;
+  height: 20%;
 }
 
-
-.avatar-eyes{
-    background: no-repeat url(../images/avatar/eyes1.png);
-    background-size: 100%;
-    width: var(--eyes-width);
-    height: calc(220 * var(--eyes-width)/792);
-    z-index: 10;
-    position: absolute;
-    top: 48%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.avatar-face {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
 }
 
-.avatar-mouth{
-    background: no-repeat url(../images/avatar/mouth3.png);
-    background-size: 100%;
-    width: var(--mouth-width);
-    height: calc(270 * var(--mouth-width)/545);
-    z-index: 10;
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.avatar-eyes {
+  background: no-repeat url(../images/avatar/eyes1.png);
+  background-size: 100%;
+  width: var(--eyes-width);
+  height: calc(220 * var(--eyes-width) / 792);
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.avatar-mouth {
+  background: no-repeat url(../images/avatar/mouth4.png);
+  background-size: 100%;
+  width: var(--mouth-width);
+  height: calc(270 * var(--mouth-width) / 545);
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.avatar-horn,
+.avatar-face,
+.avatar-eyes,
+.avatar-mouth {
+  position: absolute;
+}
+
+.avatar-horn,
+.avatar-face {
+  background-color: var(--face-color);
+  border: 4px solid var(--face-border-color);
+  border-radius: 20%;
+}
+
+.avatar-eyes,
+.avatar-mouth {
+  z-index: 1;
+}
+
+/* 닉네임 섹션 */
+.nickname input {
+  width: var(--avatar-container-width);
+  background-color: var(--gray);
+}
+
+.submit {
+  background-color: var(--face-border-color);
+  color: #fff;
+}
+
+.submit,
+.reroll {
+  width: calc(var(--avatar-container-width) / 2.2);
+}
+
+.nickname input,
+.submit,
+.reroll {
+  margin: 20px 0;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 0 1em;
+  height: 3.5em;
+  border: none;
 }
