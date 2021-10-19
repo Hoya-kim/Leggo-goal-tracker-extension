@@ -5,21 +5,95 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leggo</title>
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     />
+    <link rel="stylesheet" href=".././css/nav.css" />
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
   </head>
   <body>
     <header>
       <!-- header -->
+      <h1 class="header-logo">LEGGO</h1>
+      <div class="header-profile">
+        <div class="header-avatar"></div>
+        <div class="header-nickname">화려한 다이아몬드</div>
+        <div class="header-level">Level 1</div>
+      </div>
     </header>
-    <nav>
+    <nav class="active">
       <!-- nav -->
+      <div class="nav-bar">
+        <button class="nav-toggle-button">
+          <i class="bx bxs-right-arrow"></i>
+        </button>
+      </div>
+      <div class="nav-Content">
+        <div class="nav-profile">
+          <div class="nav-avatar"></div>
+          <div class="nav-nickname">화려한 다이아몬드</div>
+          <div class="nav-level">Level 1</div>
+        </div>
+        <a class="nav-menu">menu</a>
+      </div>
     </nav>
     <main class="goal-container">
-      <div class="goal-list">
-        <!-- goal-list -->
+      <div class="goal-interface">
+        <!-- goal-interface -->
+        <form class="goal-form">
+          <div class="goal-name-input">
+            <label for="goal-name-input">My goal:</label>
+            <input type="text" name="goal-name" id="goal-name-input" autocomplete="off" />
+          </div>
+          <div class="goal-days-input">
+            <button class="increase"><i class="bx bx-minus"></i></button>
+            <input type="text" name="goal-days" autocomplete="off" value="30" />
+            <button class="decrease"><i class="bx bx-plus"></i></button>
+          </div>
+        </form>
+        <div class="goal-list-container">
+          <p>Please enroll your goal</p>
+          <ul class="goal-list">
+            <li class="goal-list-item">
+              <a href="#goal-grid-start">
+                <div class="goal-info">
+                  <span class="goal-name">goal1</span>
+                  <span class="goal-days">30일</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-indicator"></div>
+                  <span class="progress-label">0%</span>
+                </div>
+              </a>
+            </li>
+            <li class="goal-list-item">
+              <a href="#goal-grid-start">
+                <div class="goal-info">
+                  <span class="goal-name">goal2</span>
+                  <span class="goal-days">7일</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-indicator"></div>
+                  <span class="progress-label">70%</span>
+                </div>
+              </a>
+            </li>
+            <li class="goal-list-item">
+              <a href="#goal-grid-start">
+                <div class="goal-info">
+                  <span class="goal-name">goal3</span>
+                  <span class="goal-days">14일</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-indicator"></div>
+                  <span class="progress-label">40%</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="goal-grid">
         <!-- goal-grid -->
