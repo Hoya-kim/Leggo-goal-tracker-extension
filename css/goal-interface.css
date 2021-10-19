@@ -1,39 +1,61 @@
+:root {
+    --light-yellow: #ffe36c;
+    --dark-yellow: #ffc900;
+    --light-blue: #b7d4ff;
+    --dark-blue: #6fa9ff;
+    --light-pink: #ffb4cb;
+    --dark-pink: #ff81a6;
+    --light-green: #75ffc3;
+    --dark-green: #21d889;
+    --gray: #EDEDED;
+    --gray2: #E4E4E4;
+    --black: black;
+    --white: white;
+}
+
+.goal-interface {
+    width: 350px;
+}
+
 .goal-interface input {
     border: 0;
+    outline: 0;
 }
 
 .goal-form {
-    width: fit-content;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid black;
-    font-size: 1.5rem;
+    border-bottom: 2px solid var(--black);
+    font-size: 1.25rem;
 }
 
 .goal-name-input>input {
-    padding: 6px;
-    margin: 6px;
+    width: 11.5em;
+    padding: 6px 3px;
+    margin: 6px 3px;
+    font-size: 1rem;
 }
 
 .goal-name-input>input::placeholder {
     color: #ccc;
-    font-size: 1.25rem;
+
 }
 
 .goal-days-input {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 10px 0;
 }
 
 .goal-days-input>input {
-    width: 2em;
-    height: 2em;
+    width: 2.4em;
+    height: 2.4em;
     border-radius: 50%;
     padding: 0;
-    background: #FBE389;
+    background: var(--light-yellow);
     text-align: center;
-    font-size: 1.25rem;
+    font-size: 0.8rem;
     padding-top: 2px;
     box-sizing: border-box;
 }
@@ -44,4 +66,80 @@
     background: transparent;
     padding: 0;
     cursor: pointer;
+}
+
+.goal-list-container{
+    padding-top: 60px;
+    text-align: center;
+}
+
+.goal-list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    text-align: left;
+}
+
+.goal-list-item {
+    color: var(--black);
+    background-color: var(--gray2);
+    transition: all .4s;
+}
+
+.goal-list-item>a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.goal-list-item.active {
+    color: var(--white);
+    background-color: var(--dark-yellow);
+}
+
+.goal-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 17px;
+    color: inherit;
+}
+
+.goal-name {
+    width: 80%;
+}
+
+.goal-list-item.active .progress-bar {
+    background-color: var(--gray2);
+    height: 30px;
+}
+
+.progress-bar {
+    position: relative;
+    height: 12px;
+    transition: height .4s;
+}
+
+.progress-bar>.progress-indicator {
+    width: 70%;
+    height: inherit;
+    background-color: var(--light-yellow);
+}
+
+.goal-list-item.active .progress-label{
+    height : 100%;
+}
+
+.progress-bar>.progress-label {
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    color: var(--black);
+    transition: height .4s;
+}
+
+.hidden{
+    display: none;
 }
