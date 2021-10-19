@@ -5,19 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leggo</title>
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     />
+    <link rel="stylesheet" href=".././css/nav.css" />
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/goal-interface.css" />
+    <link rel="stylesheet" href="../css/goalGrid.css" />
   </head>
   <body>
     <header>
       <!-- header -->
+      <h1 class="header-logo">LEGGO</h1>
+      <div class="header-profile">
+        <div class="header-avatar"></div>
+        <div class="header-nickname">화려한 다이아몬드</div>
+        <div class="header-level">Level 1</div>
+      </div>
     </header>
-    <nav>
+    <nav class="active">
       <!-- nav -->
+      <div class="nav-bar">
+        <button class="nav-toggle-button">
+          <i class="bx bxs-right-arrow"></i>
+        </button>
+      </div>
+      <div class="nav-Content">
+        <div class="nav-profile">
+          <div class="nav-avatar"></div>
+          <div class="nav-nickname">화려한 다이아몬드</div>
+          <div class="nav-level">Level 1</div>
+        </div>
+        <a class="nav-menu">menu</a>
+      </div>
     </nav>
     <main class="goal-container">
       <div class="goal-interface">
@@ -85,8 +107,49 @@
           </ul>
         </div>
       </div>
-      <div class="goal-grid">
-        <!-- goal-grid -->
+      <div class="goal-grid-container">
+        <div class="goal-grid">
+          <!-- goal-grid -->
+          <div id="goal-grid-start" class="goal-grid-item end-point">Start</div>
+          <button class="goal-grid-item day-button">
+            1
+            <div class="day-button-checked checked"></div>
+          </button>
+          <button class="goal-grid-item day-button">
+            2
+            <div class="day-button-checked"></div>
+          </button>
+          <button class="goal-grid-item day-button">
+            3
+            <div class="day-button-checked"></div>
+          </button>
+          <button class="goal-grid-item day-button">
+            4
+            <div class="day-button-checked"></div>
+          </button>
+          <button class="goal-grid-item day-button">
+            5
+            <div class="day-button-checked"></div>
+          </button>
+          <button class="goal-grid-item day-button">
+            6
+            <div class="day-button-checked"></div>
+          </button>
+          <button class="goal-grid-item day-button">
+            7
+            <div class="day-button-checked"></div>
+          </button>
+          <div class="goal-grid-item end-point">Finish</div>
+        </div>
+        <div class="goal-rewards">
+          <label for="goal-rewards">Rewards: </label>
+          <input
+            type="text"
+            name="goal-rewards"
+            id="goal-rewards"
+            placeholder="보상으로 폭식하기!🍖 (Enter ⮐)"
+          />
+        </div>
       </div>
     </main>
   </body>
