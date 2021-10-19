@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     />
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
   </head>
   <body>
     <header>
@@ -18,8 +19,19 @@
       <!-- nav -->
     </nav>
     <main class="goal-container">
-      <div class="goal-list">
-        <!-- goal-list -->
+      <div class="goal-interface">
+        <!-- goal-interface -->
+        <form class="goal-form">
+          <div class="goal-name">
+            <label for="goal-name">My goal:</label>
+            <input type="text" name="goal-name" id="goal-name" autocomplete="off" />
+          </div>
+          <div class="goal-days">
+            <button class="increase"><i class="bx bx-minus"></i></button>
+            <input type="text" name="goal-days" autocomplete="off" value="30"/>
+            <button class="decrease"><i class="bx bx-plus"></i></button>
+          </div>
+        </form>
       </div>
       <div class="goal-grid">
         <!-- goal-grid -->
