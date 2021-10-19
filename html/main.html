@@ -10,6 +10,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     />
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/goal-interface.css" />
   </head>
   <body>
     <header>
@@ -24,12 +25,18 @@
         <form class="goal-form">
           <div class="goal-name-input">
             <label for="goal-name-input">My goal:</label>
-            <input type="text" name="goal-name" id="goal-name-input" autocomplete="off" />
+            <input
+              type="text"
+              name="goal-name"
+              id="goal-name-input"
+              autocomplete="off"
+              placeholder="6시이후금식🚫(Enter⮐)"
+            />
           </div>
           <div class="goal-days-input">
-            <button class="increase"><i class="bx bx-minus"></i></button>
+            <button class="decrease"><i class="bx bx-minus"></i></button>
             <input type="text" name="goal-days" autocomplete="off" value="30" />
-            <button class="decrease"><i class="bx bx-plus"></i></button>
+            <button class="increase"><i class="bx bx-plus"></i></button>
           </div>
         </form>
         <div class="goal-list-container">

@@ -1,0 +1,47 @@
+.goal-interface input {
+    border: 0;
+}
+
+.goal-form {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid black;
+    font-size: 1.5rem;
+}
+
+.goal-name-input>input {
+    padding: 6px;
+    margin: 6px;
+}
+
+.goal-name-input>input::placeholder {
+    color: #ccc;
+    font-size: 1.25rem;
+}
+
+.goal-days-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.goal-days-input>input {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    padding: 0;
+    background: #FBE389;
+    text-align: center;
+    font-size: 1.25rem;
+    padding-top: 2px;
+    box-sizing: border-box;
+}
+
+.goal-days-input>button {
+    display: inherit;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
