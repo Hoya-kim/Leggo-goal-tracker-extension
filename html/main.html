@@ -10,6 +10,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     />
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/goal-interface.css" />
   </head>
   <body>
     <header>
@@ -24,21 +25,31 @@
         <form class="goal-form">
           <div class="goal-name-input">
             <label for="goal-name-input">My goal:</label>
-            <input type="text" name="goal-name" id="goal-name-input" autocomplete="off" />
+            <input
+              type="text"
+              name="goal-name"
+              id="goal-name-input"
+              autocomplete="off"
+              placeholder="6시이후금식🚫(Enter⮐)"
+            />
           </div>
           <div class="goal-days-input">
-            <button class="increase"><i class="bx bx-minus"></i></button>
+            <button class="decrease" type="button"><i class="bx bx-minus"></i></button>
             <input type="text" name="goal-days" autocomplete="off" value="30" />
-            <button class="decrease"><i class="bx bx-plus"></i></button>
+            <button class="increase" type="button"><i class="bx bx-plus"></i></button>
           </div>
         </form>
         <div class="goal-list-container">
-          <p>Please enroll your goal</p>
+          <p class="hidden">Please enroll your goal</p>
           <ul class="goal-list">
-            <li class="goal-list-item">
+            <li class="goal-list-item active">
               <a href="#goal-grid-start">
                 <div class="goal-info">
-                  <span class="goal-name">goal1</span>
+                  <span class="goal-name"
+                    >Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, eveniet, harum
+                    enim sed dolorem mollitia unde ducimus placeat hic, perferendis earum neque?
+                    Doloremque temporibus aut facilis eum soluta accusamus ea!</span
+                  >
                   <span class="goal-days">30일</span>
                 </div>
                 <div class="progress-bar">
