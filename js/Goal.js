@@ -23,7 +23,7 @@ export default class Goal {
   /** @type {string} */
   #rewards;
 
-  /** @type {(name: string, days: number) => Goal}} */
+  /** @type {(id: number, name: string, days: number) => Goal}} */
   constructor(id, name, days) {
     this.#id = id;
     this.#name = name;
