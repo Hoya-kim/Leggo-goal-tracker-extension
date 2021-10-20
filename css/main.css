@@ -87,8 +87,16 @@ a {
 .header-nickname {
   padding: 0 10px;
 }
-.header-level {
-  padding: 0 10px;
+
+.badge {
+  background: var(--primary-color);
+  padding: 6px 10px;
+  display: block;
+  height: 28px;
+  color: var(--white);
+  /* line-height: 20px; */
+  border-radius: 10px;
+  font-family: 'Quantico', sans-serif;
 }
 
 .nav-bar {
@@ -204,52 +212,58 @@ a {
   outline: 0;
 }
 
-.goal-form {
+.goal-input-container {
+  font-size: 1.25rem;
+}
+
+.goal-input-container > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid var(--black);
-  font-size: 1.25rem;
+  padding: 20px 0 10px;
+  margin-bottom: 10px;
 }
 
-.goal-name-input > input {
-  width: 11.5em;
-  padding: 6px 3px;
-  margin: 6px 3px;
-  font-size: 1rem;
+.goal-input-container label {
+  width: 20.9%;
 }
 
-.goal-name-input > input::placeholder {
+.goal-input-container input {
+  width: 61%;
+}
+
+.goal-input-container input::placeholder {
   color: #ccc;
 }
 
-.goal-days-input {
+.goal-input-container > div > *:last-child {
+  width: 16.1%;
+}
+
+.goal-days-control {
   display: flex;
-  align-items: center;
-  padding: 10px 0;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 1rem;
 }
 
-.goal-days-input > input {
-  width: 2.4em;
-  height: 2.4em;
-  border-radius: 50%;
-  padding: 0;
-  background: var(--light-yellow);
-  text-align: center;
-  font-size: 0.8rem;
-  padding-top: 2px;
-}
-
-.goal-days-input > button {
-  display: inherit;
+.goal-days-control > button {
   border: 0;
   background: transparent;
-  padding: 0;
   cursor: pointer;
+  height: 16px;
+  padding: 0;
+  color: var(--primary-color);
+}
+
+button.badge {
+  border: 0;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 .goal-list-container {
-  padding-top: 60px;
   text-align: center;
 }
 
@@ -283,6 +297,7 @@ a {
   justify-content: space-between;
   padding: 17px;
   color: inherit;
+  position: relative;
 }
 
 .goal-name {
@@ -292,6 +307,26 @@ a {
 .goal-list-item.active .progress-bar {
   background-color: var(--gray2);
   height: 30px;
+}
+
+.goal-list-item.active .goal-days {
+  opacity: 0;
+}
+
+.goal-delete {
+  border: 0;
+  background: transparent;
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  opacity: 0;
+  cursor: pointer;
+  font-size: 1.25rem;
+  color: inherit;
+}
+
+.goal-list-item.active .goal-delete {
+  opacity: 1;
 }
 
 .progress-bar {
@@ -321,7 +356,7 @@ a {
 }
 
 .hidden {
-  display: none;
+  opacity: 0;
 }
 
 /* goal-grid */
