@@ -1,0 +1,19 @@
+:root {
+  --light-yellow: #ffe37c;
+  --dark-yellow: #ffc900;
+  --light-blue: #b7d4ff;
+  --dark-blue: #6fa9ff;
+  --light-pink: #ffb4cb;
+  --dark-pink: #ff81a6;
+  --light-green: #75ffc3;
+  --dark-green: #21d889;
+  --gray1: #ededed;
+  --gray2: #e4e4e4;
+  --gray3: #f1f1f1;
+  --dark-gray: darkgray;
+  --black: black;
+  --white: white;
+
+  --primary-color: var(--dark-yellow);
+  --secondary-color: var(--light-yellow);
+}
