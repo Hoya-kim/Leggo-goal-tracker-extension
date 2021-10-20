@@ -1,0 +1,12 @@
+{
+  "color": [
+    { "border": "--dark-yellow", "face": "--light-yellow" },
+    { "border": "--dark-blue", "face": "--light-blue" },
+
+    { "border": "--dark-pink", "face": "--light-pink" },
+
+    { "border": "--dark-green", "face": "--light-green" }
+  ],
+  "eyes": ["eyes1.png", "eyes2.png", "eyes3.png", "eyes4.png", "eyes5.png", "eyes6.png"],
+  "mouth": ["mouth1.png", "mouth2.png", "mouth3.png", "mouth4.png", "mouth5.png"]
+}
