@@ -3,8 +3,8 @@
   --eyes-width: 35%;
   --mouth-width: 25%;
 
-  /* --face-color: var(--light-yellow);
-  --face-border-color: var(--dark-yellow); */
+  --face-border-color: var(--primary-color);
+  --face-color: var(--secondary-color);
 }
 .avatar {
   position: relative;
@@ -39,7 +39,6 @@
 }
 
 .avatar-eyes {
-  /* background-image: url(../images/avatar/eyes1.png); */
   width: var(--eyes-width);
   height: calc(220 * var(--eyes-width) / 792);
   top: 48%;
@@ -48,7 +47,6 @@
 }
 
 .avatar-mouth {
-  /* background-image: url(../images/avatar/mouth4.png); */
   width: var(--mouth-width);
   height: calc(270 * var(--mouth-width) / 545);
   top: 65%;

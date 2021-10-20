@@ -1,23 +1,5 @@
+@import url(./color.css);
 @import url(./avatar.css);
-
-:root {
-  --light-yellow: #ffe37c;
-  --dark-yellow: #ffc900;
-  --light-blue: #b7d4ff;
-  --dark-blue: #6fa9ff;
-  --light-pink: #ffb4cb;
-  --dark-pink: #ff81a6;
-  --light-green: #75ffc3;
-  --dark-green: #21d889;
-  --gray: #ededed;
-
-  --avatar-container-width: 300px;
-  --eyes-width: 35%;
-  --mouth-width: 25%;
-
-  --face-color: var(--light-yellow);
-  --face-border-color: var(--dark-yellow);
-}
 
 /* 헤더 */
 .logo {
@@ -26,7 +8,6 @@
 }
 
 /* 메인 */
-
 .login-container {
   margin: 0 auto;
   width: var(--avatar-container-width);
