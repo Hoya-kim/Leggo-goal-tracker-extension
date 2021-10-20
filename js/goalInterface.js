@@ -1,7 +1,7 @@
 import Goal from './Goal.js';
 import state from './state.js';
 
-const $goalForm = document.querySelector('.goal-form');
+const $goalInputContainer = document.querySelector('.goal-input-container');
 const $goalNameInput = document.getElementById('goal-name-input');
 const $increase = document.querySelector('.increase');
 const $goalDaysInput = document.getElementById('goal-days-input');
@@ -22,6 +22,9 @@ const render = goalDataList => {
                         ${goal.name}
                     </span>
                     <span class="goal-days">${goal.days}일</span>
+                    <button class="goal-delete">
+                      <i class='bx bx-trash'></i>
+                    </button>
                 </div>
                 <div class="progress-bar">
                     <div class="progress-indicator"></div>
@@ -48,17 +51,19 @@ const Counter = (() => {
   };
 })();
 
-const goalDaysInputValidation = () =>
-  /^\d+$/.test($goalDaysInput.value) && $goalDaysInput.value > 2 && $goalDaysInput.value < 100;
+const goalDaysInputValidation = () => {
+  const { value } = $goalDaysInput;
+
+  return /^\d+$/.test(value) && +value > 2 && +value < 100;
+};
 
 window.addEventListener('DOMContentLoaded', () => {
   state.fetchGoalList();
   render(state.getGoalListAll());
 });
 
-$goalForm.onkeyup = e => {
-  if (e.key !== 'Enter') return;
-  if (!e.target.matches('.goal-form input')) return;
+$goalInputContainer.onsubmit = e => {
+  e.preventDefault();
 
   const goalName = $goalNameInput.value.trim();
   const goalDays = $goalDaysInput.value;
@@ -68,7 +73,6 @@ $goalForm.onkeyup = e => {
     state.addGoalToList(newGoal.data);
     render(state.getGoalListAll());
     $goalNameInput.value = '';
-    $goalDaysInput.value = 30;
   } else {
     alert('올바른 입력값을 입력해주세요');
   }

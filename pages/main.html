@@ -30,7 +30,7 @@
           <div class="avatar-mouth"></div>
         </div>
         <div class="header-nickname">화려한 다이아몬드</div>
-        <div class="header-level">Level 1</div>
+        <div class="badge">Level 1</div>
       </div>
     </header>
     <nav class="active">
@@ -59,7 +59,21 @@
       <div class="goal-container">
         <div class="goal-interface">
           <!-- goal-interface -->
-          <form class="goal-form">
+          <form class="goal-input-container">
+            <div class="goal-days-input">
+              <label for="goal-days-input">Days:</label>
+              <input
+                type="text"
+                name="goal-days"
+                id="goal-days-input"
+                autocomplete="off"
+                placeholder="3 ~ 99"
+              />
+              <div class="goal-days-control">
+                <button class="increase" type="button"><i class="bx bxs-up-arrow"></i></button>
+                <button class="decrease" type="button"><i class="bx bxs-down-arrow"></i></button>
+              </div>
+            </div>
             <div class="goal-name-input">
               <label for="goal-name-input">My goal:</label>
               <input
@@ -69,17 +83,7 @@
                 autocomplete="off"
                 placeholder="6시이후금식🚫(Enter⮐)"
               />
-            </div>
-            <div class="goal-days-input">
-              <button class="decrease" type="button"><i class="bx bx-minus"></i></button>
-              <input
-                type="text"
-                name="goal-days"
-                id="goal-days-input"
-                utocomplete="off"
-                value="30"
-              />
-              <button class="increase" type="button"><i class="bx bx-plus"></i></button>
+              <button class="badge">Enter</button>
             </div>
           </form>
           <div class="goal-list-container">
