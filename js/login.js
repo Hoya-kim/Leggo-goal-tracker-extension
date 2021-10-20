@@ -1,11 +1,12 @@
 const $nickname = document.getElementById('nickname');
+const $submit = document.querySelector('.submit');
 const $reroll = document.querySelector('.reroll');
 
 let nicknameWords = {};
 let avatarComponentInfo = {};
 
 const userInfo = {
-  color: 'yellow',
+  color: '',
   eyes: 0,
   mouth: 0,
   nickname: '',
@@ -48,6 +49,8 @@ const fetchAndInitNickname = () => {
     .then(response => response.json())
     .then(json => {
       nicknameWords = json;
+    })
+    .then(() => {
       setRandomNickname();
     });
 };
@@ -66,7 +69,24 @@ window.addEventListener('DOMContentLoaded', () => {
   fetchAndInitAvatarInfo();
 });
 
+$submit.onclick = () => {
+  localStorage.setItem('userInfo', userInfo);
+  window.location.href = './pages/main.html';
+};
+
 $reroll.onclick = () => {
   setRandomNickname();
   setRandomAvatar();
+};
+
+window.onkeyup = e => {
+  if (e.key !== 'Enter' && e.key !== 'r') return;
+  if (e.key === 'r') {
+    setRandomNickname();
+    setRandomAvatar();
+  }
+  if (e.key === 'Enter') {
+    localStorage.setItem('userInfo', userInfo);
+    window.location.href = './pages/main.html';
+  }
 };
