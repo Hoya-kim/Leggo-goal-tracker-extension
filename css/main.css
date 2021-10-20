@@ -190,7 +190,8 @@ a {
 /* goal-interface */
 
 .goal-interface {
-  width: 350px;
+  /* width: 350px; */
+  width: 30vw;
 }
 
 .goal-interface input {
@@ -251,6 +252,8 @@ button.badge {
 
 .goal-list-container {
   text-align: center;
+  height: 55vh;
+  overflow: scroll;
 }
 
 .goal-list {
@@ -353,12 +356,27 @@ button.badge {
 
 .goal-grid {
   display: grid;
-  gap: 2px;
+  gap: 0.1vw 0.1vw;
   grid-template-columns: repeat(9, 1fr);
-  --grid-item-width: 45px;
+  --grid-item-width: 3.5vw;
   opacity: 0;
   /* transition: all 300ms; */
+  max-height: 65vh;
+  overflow-y: scroll;
+  overflow-x: visible;
 }
+
+.scroll-gradient {
+  background: linear-gradient(transparent 33%, rgba(255, 255, 255, 0)),
+    linear-gradient(rgba(255, 255, 255, 0), transparent 66%) 0 100%,
+    radial-gradient(farthest-side at 50% 0, rgba(86, 82, 72, 0.5), rgba(0, 0, 0, 0)),
+    radial-gradient(farthest-side at 50% 100%, rgba(86, 82, 72, 0.5), rgba(0, 0, 0, 0)) 0 100%;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-attachment: local, local, scroll, scroll;
+  background-size: 100% 66px, 100% 66px, 100% 22px, 100% 22px;
+}
+
 .goal-grid-item {
   padding: 0;
   background-color: transparent;
@@ -391,8 +409,11 @@ button.badge {
   border-radius: 50%;
   align-self: center;
   color: #fff;
+  font-family: 'Quantico', sans-serif;
 }
+
 .day-button-checked {
+  font-size: 1.5rem;
   position: absolute;
   z-index: -1;
   width: calc(var(--grid-item-width) * 0.55);
@@ -401,10 +422,11 @@ button.badge {
   top: 65%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background-color: transparent;
+  color: transparent;
 }
-.checked {
-  background-color: var(--secondary-color);
+
+.checked > .day-button-checked {
+  color: var(--primary-color);
 }
 
 .goal-rewards {
