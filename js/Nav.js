@@ -10,6 +10,10 @@ const $toggleButton = document.querySelector('.toggle');
 const $headerProfile = document.querySelector('.header-profile');
 const $navContainer = document.querySelector('.nav-container');
 const $nav = document.querySelector('nav');
+const $avatarFace = document.querySelector('.avatar-face');
+const $avatarEyes = document.querySelector('.avatar-eyes');
+const $avatarMouth = document.querySelector('.avatar-mouth');
+const $navNickname = document.querySelector('.nav-nickname');
 const $goalContainer = document.querySelector('.goal-container');
 
 const render = () => {
@@ -20,6 +24,25 @@ const render = () => {
   [$navContainer, $headerProfile, $toggleButton, $goalContainer].forEach($el =>
     $el.classList.toggle('notransition', state.isInitRender),
   );
+
+  // 아바타
+  document.documentElement.style.setProperty(
+    '--face-color',
+    `var(${JSON.parse(localStorage.getItem('userInfo')).color.face})`,
+  );
+  document.documentElement.style.setProperty(
+    '--face-border-color',
+    `var(${JSON.parse(localStorage.getItem('userInfo')).color.border})`,
+  );
+
+  const { eyes } = JSON.parse(localStorage.getItem('userInfo'));
+  $avatarEyes.style['background-image'] = 'url(../images/avatar/' + eyes;
+
+  const { mouth } = JSON.parse(localStorage.getItem('userInfo'));
+  $avatarMouth.style['background-image'] = 'url(../images/avatar/' + mouth;
+
+  // 닉네임
+  $navNickname.innerHTML = JSON.parse(localStorage.getItem('userInfo')).nickname;
 };
 
 const setState = newState => {
