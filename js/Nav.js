@@ -1,5 +1,5 @@
 let state = {
-  isNavigationOpended: true,
+  isNavigationOpend: false,
   isInitRender: false,
 };
 
@@ -7,30 +7,32 @@ const $toggleButton = document.querySelector('.toggle');
 const $headerProfile = document.querySelector('.header-profile');
 const $navContainer = document.querySelector('.nav-container');
 const $nav = document.querySelector('nav');
+const $goalContainer = document.querySelector('.goal-container');
 
 const render = () => {
-  state.isNavigationOpended === true
+  state.isNavigationOpend === true
     ? ($headerProfile.style.opacity = '0')
     : ($headerProfile.style.opacity = '1');
-  $nav.classList.toggle('active', state.isNavigationOpended);
-  // $navContainer.classList.toggle('active', state.isInitRender);
+  $nav.classList.toggle('active', state.isNavigationOpend);
+  [$navContainer, $headerProfile, $toggleButton, $goalContainer].forEach($el =>
+    $el.classList.toggle('notransition', state.isInitRender),
+  );
 };
 
 const setState = newState => {
   state = newState;
-  localStorage.setItem('isNavigationOpended', state.isNavigationOpended);
+  sessionStorage.setItem('isNavigationOpend', state.isNavigationOpend);
   render();
 };
 
 $toggleButton.addEventListener('click', () => {
-  setState({ isNavigationOpended: !state.isNavigationOpended, isInitRender: false });
+  setState({ isNavigationOpend: !state.isNavigationOpend, isInitRender: false });
 });
 
 window.addEventListener('DOMContentLoaded', () => {
-  if (localStorage.getItem('isNavigationOpended')) {
-    const isNavigationOpended = JSON.parse(localStorage.getItem('isNavigationOpended')) || false;
-    setState({ isNavigationOpended, isInitRender: true });
-  } else {
-    setState({ isNavigationOpended: true, isInitRender: true });
-  }
+  setTimeout(() => {
+    document.body.style.opacity = 1;
+  }, 300);
+  const isNavigationOpend = JSON.parse(sessionStorage.getItem('isNavigationOpend')) || false;
+  setState({ isNavigationOpend, isInitRender: true });
 });
