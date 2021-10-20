@@ -70,7 +70,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 $submit.onclick = () => {
-  localStorage.setItem('userInfo', userInfo);
+  localStorage.setItem('userInfo', JSON.stringify(userInfo));
   window.location.href = './pages/main.html';
 };
 
@@ -86,7 +86,7 @@ window.onkeyup = e => {
     setRandomAvatar();
   }
   if (e.key === 'Enter') {
-    localStorage.setItem('userInfo', userInfo);
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
     window.location.href = './pages/main.html';
   }
 };
