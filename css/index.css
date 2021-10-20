@@ -30,7 +30,7 @@
 /* 닉네임 섹션 */
 .nickname input {
   width: var(--avatar-container-width);
-  background-color: var(--gray);
+  background-color: var(--gray1);
 }
 
 .submit {
