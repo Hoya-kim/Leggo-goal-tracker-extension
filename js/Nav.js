@@ -11,7 +11,6 @@ const $headerProfile = document.querySelector('.header-profile');
 const $headerNickname = document.querySelector('.header-nickname');
 const $navContainer = document.querySelector('.nav-container');
 const $nav = document.querySelector('nav');
-const $avatarFace = document.querySelector('.avatar-face');
 const $avatarEyes = document.querySelectorAll('.avatar-eyes');
 const $avatarMouth = document.querySelectorAll('.avatar-mouth');
 const $navNickname = document.querySelector('.nav-nickname');
@@ -59,6 +58,12 @@ const setState = newState => {
 
 $toggleButton.addEventListener('click', () => {
   setState({ isNavigationOpend: !state.isNavigationOpend, isInitRender: false });
+});
+
+window.addEventListener('keyup', e => {
+  if (e.key === '`') {
+    setState({ isNavigationOpend: !state.isNavigationOpend, isInitRender: false });
+  }
 });
 
 window.addEventListener('DOMContentLoaded', () => {
