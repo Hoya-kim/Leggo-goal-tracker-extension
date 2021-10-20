@@ -1,3 +1,5 @@
+@import url(./avatar.css);
+
 :root {
   --light-yellow: #ffe36c;
   --dark-yellow: #ffc900;
@@ -137,6 +139,7 @@ a {
   width: 200px;
 }
 .nav-avatar {
+  position: relative;
   margin: 0 auto;
   height: 140px;
   width: 140px;
