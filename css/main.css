@@ -51,12 +51,13 @@ a {
   transition: none !important;
 }
 
-.header-logo {
+.header-logo img {
   position: absolute;
-  left: 100px;
+  left: 75px;
   top: 20px;
   z-index: 2;
-  text-shadow: 5px 5px 0 darkgray;
+  /* text-shadow: 5px 5px 0 darkgray; */
+  width: 150px;
 }
 /* .header-detail {
   position: absolute;
@@ -95,7 +96,7 @@ a {
   left: 0;
   height: 100%;
   width: 50px;
-  background-color: var(--dark-gray);
+  background-color: var(--secondary-color);
   z-index: 1;
   text-align: center;
 }
