@@ -21,6 +21,9 @@
 * {
   box-sizing: border-box;
 }
+header {
+  min-width: 800px;
+}
 
 body {
   min-width: 1200px;
@@ -32,7 +35,16 @@ body {
 h1 {
   margin: 0;
 }
-
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
 .notransition {
   transition: none !important;
 }
@@ -44,6 +56,12 @@ h1 {
   z-index: 2;
   text-shadow: 5px 5px 0 darkgray;
 }
+/* .header-detail {
+  position: absolute;
+  top: 60px;
+  left: 109px;
+  z-index: 2;
+} */
 
 .header-profile {
   position: absolute;
@@ -92,12 +110,14 @@ h1 {
 
 .nav-container {
   margin-left: 50px;
+  padding-bottom: 50px;
   left: -300px;
   width: 200px;
   height: 100%;
   position: absolute;
   display: flex;
   flex-flow: column;
+  justify-content: center;
   text-align: center;
   background-color: var(--gray3);
   transition: transform 0.3s;
@@ -135,17 +155,21 @@ h1 {
   cursor: pointer;
   text-align: center;
   width: 100%;
-  padding: 20px 0;
+  padding: 10px 0;
   display: block;
   position: relative;
-  background-color: var(--light-yellow);
+  color: var(--gray1);
+}
+.nav-menu-select {
+  background-color: var(--secondary-color);
   color: white;
 }
 
 .goal-container {
+  min-width: 800px;
   display: flex;
   margin: 0 auto;
-  height: 100vh;
+  height: 100%;
   align-items: center;
   width: calc(100% - 50px);
   position: absolute;

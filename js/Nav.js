@@ -1,3 +1,6 @@
+// TODO:
+// - 순서 교정하기
+
 let state = {
   isNavigationOpend: false,
   isInitRender: false,
@@ -27,6 +30,12 @@ const setState = newState => {
 
 $toggleButton.addEventListener('click', () => {
   setState({ isNavigationOpend: !state.isNavigationOpend, isInitRender: false });
+});
+
+window.addEventListener('click', e => {
+  if (e.key === '2') {
+    console.log('tset');
+  }
 });
 
 window.addEventListener('DOMContentLoaded', () => {
