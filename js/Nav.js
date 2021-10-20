@@ -10,6 +10,7 @@ const $toggleButton = document.querySelector('.toggle');
 const $headerProfile = document.querySelector('.header-profile');
 const $navContainer = document.querySelector('.nav-container');
 const $nav = document.querySelector('nav');
+const $navNickname = document.querySelector('.nav-nickname');
 const $goalContainer = document.querySelector('.goal-container');
 
 const render = () => {
@@ -20,6 +21,9 @@ const render = () => {
   [$navContainer, $headerProfile, $toggleButton, $goalContainer].forEach($el =>
     $el.classList.toggle('notransition', state.isInitRender),
   );
+
+  // 닉네임
+  $navNickname.innerHTML = JSON.parse(localStorage.getItem('userInfo')).nickname;
 };
 
 const setState = newState => {
