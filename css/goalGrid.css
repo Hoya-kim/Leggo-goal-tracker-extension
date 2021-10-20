@@ -6,15 +6,17 @@ body {
 }
 
 .goal-grid-container {
-  width: 540px;
+  width: 40%;
+  min-width: 400px;
 }
 
 .goal-grid {
   display: grid;
   gap: 2px;
   grid-template-columns: repeat(9, 1fr);
-  --grid-item-width: 60px;
-  width: 100%;
+  --grid-item-width: 45px;
+  opacity: 0;
+  transition: all 500ms;
 }
 .goal-grid-item {
   padding: 0;
@@ -34,6 +36,7 @@ body {
   font-size: 0.85rem;
   padding-top: 5px;
   border: solid 1px #ccc;
+  transition: all 200ms;
 }
 .day-button:hover {
   background-color: var(--primary-color);
@@ -65,7 +68,7 @@ body {
 
 .goal-rewards {
   display: inline-block;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   border-bottom: 2px solid #000;
   margin-top: 1rem;
   padding: 0.5rem;
@@ -75,7 +78,7 @@ body {
 .goal-rewards > input {
   border: 0;
   outline: none;
-  width: 75%;
+  width: 70%;
 }
 
 .goal-rewards > input::placeholder {
