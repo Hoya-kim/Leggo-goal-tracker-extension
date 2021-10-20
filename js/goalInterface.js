@@ -48,8 +48,11 @@ const Counter = (() => {
   };
 })();
 
-const goalDaysInputValidation = () =>
-  /^\d+$/.test($goalDaysInput.value) && $goalDaysInput.value > 2 && $goalDaysInput.value < 100;
+const goalDaysInputValidation = () => {
+  const { value } = $goalDaysInput;
+
+  return /^\d+$/.test(value) && +value > 2 && +value < 100;
+};
 
 window.addEventListener('DOMContentLoaded', () => {
   state.fetchGoalList();
