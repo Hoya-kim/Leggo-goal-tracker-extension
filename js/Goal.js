@@ -24,12 +24,12 @@ export default class Goal {
   #rewards;
 
   /** @type {(id: number, name: string, days: number) => Goal}} */
-  constructor(id, name, days) {
-    this.#id = id;
+  constructor({ id, name, days, isAchieve = [], rewards = '' }) {
+    this.#id = +id;
     this.#name = name;
-    this.#days = days;
-    this.#isAchieve = Array.from({ length: days }, () => false);
-    this.#rewards = '';
+    this.#days = +days;
+    this.#isAchieve = isAchieve.length ? isAchieve : Array(+days).fill(false);
+    this.#rewards = rewards;
   }
 
   get id() {
@@ -63,7 +63,7 @@ export default class Goal {
    * @param {number} dayNum
    */
   toggleAchievementOfDay(dayNum) {
-    this.#isAchieve[dayNum - 1] = !this.#isAchieve[dayNum - 1];
+    this.#isAchieve[dayNum] = !this.#isAchieve[dayNum];
   }
 }
 
