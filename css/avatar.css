@@ -1,3 +1,11 @@
+:root {
+  --avatar-container-width: 300px;
+  --eyes-width: 35%;
+  --mouth-width: 25%;
+
+  /* --face-color: var(--light-yellow);
+  --face-border-color: var(--dark-yellow); */
+}
 .avatar {
   position: relative;
   display: flex;
