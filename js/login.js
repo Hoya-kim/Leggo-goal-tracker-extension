@@ -12,25 +12,35 @@ const getRandomNickname = () => {
   return adjectiveOfNickname + ' ' + nounOfNickname;
 };
 
-const setRandomNickname = () => {
-  const nickname = getRandomNickname();
+const setNickname = toChangeAvatar => {
+  const nickname = toChangeAvatar
+    ? JSON.parse(localStorage.getItem('userInfo')).nickname
+    : getRandomNickname();
+
   document.getElementById('nickname').value = nickname;
   userInfo.nickname = nickname;
 };
 
-const setRandomAvatar = () => {
-  const randColor = avatarComponentInfo.color[getRandomNumber(avatarComponentInfo.color.length)];
-  const randEyes = avatarComponentInfo.eyes[getRandomNumber(avatarComponentInfo.eyes.length)];
-  const randMouth = avatarComponentInfo.mouth[getRandomNumber(avatarComponentInfo.mouth.length)];
+const setAvatar = toChangeAvatar => {
+  const color = toChangeAvatar
+    ? JSON.parse(localStorage.getItem('userInfo')).color
+    : avatarComponentInfo.color[getRandomNumber(avatarComponentInfo.color.length)];
 
-  document.documentElement.style.setProperty('--face-color', `var(${randColor.face})`);
-  document.documentElement.style.setProperty('--face-border-color', `var(${randColor.border})`);
-  document.querySelector('.avatar-eyes').style['background-image'] =
-    'url(../images/avatar/' + randEyes;
+  const eyes = toChangeAvatar
+    ? JSON.parse(localStorage.getItem('userInfo')).eyes
+    : avatarComponentInfo.eyes[getRandomNumber(avatarComponentInfo.eyes.length)];
+
+  const mouth = toChangeAvatar
+    ? JSON.parse(localStorage.getItem('userInfo')).mouth
+    : avatarComponentInfo.mouth[getRandomNumber(avatarComponentInfo.mouth.length)];
+
+  document.documentElement.style.setProperty('--face-color', `var(${color.face})`);
+  document.documentElement.style.setProperty('--face-border-color', `var(${color.border})`);
+  document.querySelector('.avatar-eyes').style['background-image'] = 'url(../images/avatar/' + eyes;
   document.querySelector('.avatar-mouth').style['background-image'] =
-    'url(../images/avatar/' + randMouth;
+    'url(../images/avatar/' + mouth;
 
-  [userInfo.color, userInfo.eyes, userInfo.mouth] = [randColor, randEyes, randMouth];
+  [userInfo.color, userInfo.eyes, userInfo.mouth] = [color, eyes, mouth];
 };
 
 const fetchAndInitNickname = () => {
@@ -40,7 +50,7 @@ const fetchAndInitNickname = () => {
       nicknameWords = json;
     })
     .then(() => {
-      setRandomNickname();
+      setNickname(localStorage.getItem('userInfo'));
     });
 };
 
@@ -49,7 +59,7 @@ const fetchAndInitAvatarInfo = () => {
     .then(response => response.json())
     .then(json => {
       avatarComponentInfo = json;
-      setRandomAvatar();
+      setAvatar(localStorage.getItem('userInfo'));
     });
 };
 
@@ -64,15 +74,15 @@ document.querySelector('.submit').onclick = () => {
 };
 
 document.querySelector('.reroll').onclick = () => {
-  setRandomNickname();
-  setRandomAvatar();
+  setNickname(false);
+  setAvatar(false);
 };
 
 window.onkeyup = e => {
   if (e.key !== 'Enter' && e.key !== 'r') return;
   if (e.key === 'r') {
-    setRandomNickname();
-    setRandomAvatar();
+    setNickname(false);
+    setAvatar(false);
   }
   if (e.key === 'Enter') {
     localStorage.setItem('userInfo', JSON.stringify(userInfo));
