@@ -1,24 +1,5 @@
+@import url(./color.css);
 @import url(./avatar.css);
-
-:root {
-  --light-yellow: #ffe36c;
-  --dark-yellow: #ffc900;
-  --light-blue: #b7d4ff;
-  --dark-blue: #6fa9ff;
-  --light-pink: #ffb4cb;
-  --dark-pink: #ff81a6;
-  --light-green: #75ffc3;
-  --dark-green: #21d889;
-  --gray: #ededed;
-  --gray2: #e4e4e4;
-  --gray3: #f1f1f1;
-  --dark-gray: darkgray;
-  --black: black;
-  --white: white;
-
-  --primary-color: var(--dark-yellow);
-  --secondary-color: var(--light-yellow);
-}
 
 * {
   box-sizing: border-box;
@@ -234,7 +215,7 @@ a {
   height: 2.4em;
   border-radius: 50%;
   padding: 0;
-  background: var(--light-yellow);
+  background: var(--secondary-color);
   text-align: center;
   font-size: 0.8rem;
   padding-top: 2px;
@@ -275,7 +256,7 @@ a {
 
 .goal-list-item.active {
   color: var(--white);
-  background-color: var(--dark-yellow);
+  background-color: var(--primary-color);
 }
 
 .goal-info {
@@ -303,7 +284,7 @@ a {
 .progress-bar > .progress-indicator {
   width: 70%;
   height: inherit;
-  background-color: var(--light-yellow);
+  background-color: var(--secondary-color);
 }
 
 .goal-list-item.active .progress-label {
