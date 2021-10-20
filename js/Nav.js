@@ -61,12 +61,6 @@ $toggleButton.addEventListener('click', () => {
   setState({ isNavigationOpend: !state.isNavigationOpend, isInitRender: false });
 });
 
-// window.addEventListener('keyup', e => {
-//   if (e.key === '`') {
-
-//   }
-// });
-
 window.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     document.body.style.opacity = 1;
