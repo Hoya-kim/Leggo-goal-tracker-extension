@@ -129,6 +129,7 @@
 .submit,
 .reroll {
   width: calc(var(--avatar-container-width) / 2.2);
+  cursor: pointer;
 }
 
 .nickname input,
