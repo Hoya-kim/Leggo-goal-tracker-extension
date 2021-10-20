@@ -54,13 +54,14 @@
             </div>
             <div class="goal-days-input">
               <button class="decrease" type="button"><i class="bx bx-minus"></i></button>
-              <input type="text" name="goal-days" autocomplete="off" value="30" />
+              <input type="text" name="goal-days" id="goal-days-input" utocomplete="off" value="30" />
               <button class="increase" type="button"><i class="bx bx-plus"></i></button>
             </div>
           </form>
           <div class="goal-list-container">
-            <p class="hidden">Please enroll your goal</p>
+            <p>Please enroll your goal</p>
             <ul class="goal-list">
+              <!--
               <li class="goal-list-item active">
                 <a href="#goal-grid-start">
                   <div class="goal-info">
@@ -100,7 +101,7 @@
                     <span class="progress-label">40%</span>
                   </div>
                 </a>
-              </li>
+              </li>-->
             </ul>
           </div>
         </div>
@@ -152,5 +153,6 @@
     </main>
     <script type="module" src="../js/goalGrid.js"></script>
     <script src="../js/Nav.js"></script>
+    <script type="module" src="../js/goalInterface.js"></script>
   </body>
 </html>

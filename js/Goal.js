@@ -32,6 +32,10 @@ export default class Goal {
     this.#rewards = '';
   }
 
+  get id() {
+    return this.#id;
+  }
+
   /**
    * Return deep copy of instance
    * @returns {Goal}
