@@ -11,12 +11,16 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     />
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Quantico&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body>
     <header>
       <!-- header -->
-      <h1 class="header-logo">LEGGO</h1>
+      <h1><a href="/index.html" class="header-logo">LEGGO</a></h1>
       <!-- <div class="header-detail">Goal Tracker</div> -->
       <div class="header-profile">
         <div class="header-avatar">
@@ -32,7 +36,7 @@
     <nav class="active">
       <!-- nav -->
       <div class="nav-bar">
-        <i class="toggle bx bx-right-arrow-circle"></i>
+        <i class='toggle bx bxs-right-arrow-circle'></i></i>
       </div>
       <div class="nav-container">
         <div class="nav-profile">
@@ -45,9 +49,9 @@
           <div class="nav-nickname">화려한 다이아몬드</div>
           <div class="nav-level">Level 1</div>
         </div>
-        <ul>
-          <li><a href="#" class="nav-menu nav-menu-select">menu</a></li>
-          <li><a href="#" class="nav-menu">comming soon..</a></li>
+        <ul class="nav-menu-list">
+          <li><a href="#" class="nav-menu nav-menu-select">Goal Tracker</a></li>
+          <li><a href="#" class="nav-menu">ScrapBook</a></li>
         </ul>
       </div>
     </nav>
@@ -171,6 +175,7 @@
         </div>
       </div>
     </main>
+    <script src="../js/app.js"></script>
     <script type="module" src="../js/goalGrid.js"></script>
     <script src="../js/Nav.js"></script>
     <script type="module" src="../js/goalInterface.js"></script>

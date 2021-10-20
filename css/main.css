@@ -34,12 +34,15 @@ a {
 
 .header-logo {
   position: absolute;
-  left: 100px;
+  left: 88px;
   top: 20px;
   z-index: 2;
-  /* text-shadow: 5px 5px 0 darkgray; */
-  width: 150px;
+  font-size: 44px;
+  font-weight: normal;
+  color: var(--primary-color);
+  font-family: 'Luckiest Guy', cursive;
 }
+/* .header-logo  */
 /* .header-detail {
   position: absolute;
   top: 60px;
@@ -50,26 +53,31 @@ a {
 .header-profile {
   position: absolute;
   right: 20px;
-  top: 25px;
+  top: 13px;
   display: flex;
   align-items: center;
   transition: all 0.3s;
 }
 
 .header-avatar {
-  margin-right: 5px;
-  background-color: lightgray;
-  width: 30px;
+  width: 60px;
   position: relative;
-  height: 30px;
+  height: 60px;
   border-radius: 50%;
 }
 
 .header-nickname {
-  padding: 0 10px;
+  padding: 0 10px 0 5px;
 }
 .header-level {
-  padding: 0 10px;
+  background: var(--primary-color);
+  padding: 6px 10px;
+  display: block;
+  height: 28px;
+  color: var(--white);
+  /* line-height: 20px; */
+  border-radius: 10px;
+  font-family: 'Quantico', sans-serif;
 }
 
 .nav-bar {
@@ -84,9 +92,9 @@ a {
 
 .toggle {
   position: relative;
-  font-size: 36px;
-  top: 10px;
-  padding: 5px;
+  font-size: 44px;
+  top: 15px;
+  /* padding: 5px; */
   border: none;
   cursor: pointer;
   transition: transform 0.3s;
@@ -140,12 +148,16 @@ a {
   cursor: pointer;
   text-align: center;
   width: 100%;
-  padding: 10px 0;
+  padding: 20px 0;
   display: block;
   position: relative;
-  color: var(--gray1);
+  color: black;
+  line-height: 20px;
+  transition: all 0.3s;
+  text-shadow: 0 0 20px white;
 }
 .nav-menu-select {
+  font-size: 23px;
   background-color: var(--secondary-color);
   color: white;
 }
