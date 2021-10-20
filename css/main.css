@@ -51,9 +51,9 @@ a {
   transition: none !important;
 }
 
-.header-logo img {
+.header-logo {
   position: absolute;
-  left: 75px;
+  left: 100px;
   top: 20px;
   z-index: 2;
   /* text-shadow: 5px 5px 0 darkgray; */
