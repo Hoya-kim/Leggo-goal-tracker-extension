@@ -15,15 +15,6 @@
 
   --face-color: var(--light-yellow);
   --face-border-color: var(--dark-yellow);
-
-  /* --face-color: var(--light-blue);
-    --face-border-color: var(--dark-blue); */
-
-  /* --face-color: var(--light-pink);
-    --face-border-color: var(--dark-pink);  */
-
-  /* --face-color: var(--light-green);
-    --face-border-color: var(--dark-green); */
 }
 
 /* 헤더 */
@@ -77,8 +68,7 @@
 }
 
 .avatar-eyes {
-  background: no-repeat url(../images/avatar/eyes1.png);
-  background-size: 100%;
+  /* background-image: url(../images/avatar/eyes1.png); */
   width: var(--eyes-width);
   height: calc(220 * var(--eyes-width) / 792);
   top: 48%;
@@ -87,8 +77,7 @@
 }
 
 .avatar-mouth {
-  background: no-repeat url(../images/avatar/mouth4.png);
-  background-size: 100%;
+  /* background-image: url(../images/avatar/mouth4.png); */
   width: var(--mouth-width);
   height: calc(270 * var(--mouth-width) / 545);
   top: 65%;
@@ -113,6 +102,8 @@
 .avatar-eyes,
 .avatar-mouth {
   z-index: 1;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 /* 닉네임 섹션 */
