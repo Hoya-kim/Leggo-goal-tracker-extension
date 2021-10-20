@@ -328,6 +328,7 @@ button.badge {
   width: 70%;
   height: inherit;
   background-color: var(--secondary-color);
+  transition: width 0.4s;
 }
 
 .goal-list-item.active .progress-label {

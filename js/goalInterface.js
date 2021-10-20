@@ -1,5 +1,6 @@
 import Goal from './Goal.js';
 import state from './state.js';
+import { getProgressPercent } from './utils/helper.js';
 
 const $goalInputContainer = document.querySelector('.goal-input-container');
 const $goalNameInput = document.getElementById('goal-name-input');
@@ -27,8 +28,10 @@ const render = goalDataList => {
                     </button>
                 </div>
                 <div class="progress-bar">
-                    <div class="progress-indicator"></div>
-                    <span class="progress-label">0%</span>
+                    <div class="progress-indicator" style="width:${getProgressPercent(
+                      goal.isAchieve,
+                    )}%;"></div>
+                    <span class="progress-label">${getProgressPercent(goal.isAchieve)}%</span>
                 </div>
             </a>
         </li>`,
