@@ -2,9 +2,19 @@
 @import url(./avatar.css);
 
 /* 헤더 */
-.logo {
+/* .logo {
   max-width: 100px;
   width: 30%;
+} */
+.header-logo {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  z-index: 2;
+  color: var(--primary-color);
+  font-family: 'Luckiest Guy', cursive;
+  text-decoration: none;
+  font-size: 44px;
 }
 
 /* 메인 */

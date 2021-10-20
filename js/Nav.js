@@ -15,6 +15,7 @@ const $avatarEyes = document.querySelectorAll('.avatar-eyes');
 const $avatarMouth = document.querySelectorAll('.avatar-mouth');
 const $navNickname = document.querySelector('.nav-nickname');
 const $goalContainer = document.querySelector('.goal-container');
+const $navMenuList = document.querySelector('.nav-menu-list');
 
 const render = () => {
   state.isNavigationOpend === true
@@ -64,6 +65,13 @@ window.addEventListener('keyup', e => {
   if (e.key === '`') {
     setState({ isNavigationOpend: !state.isNavigationOpend, isInitRender: false });
   }
+});
+
+$navMenuList.addEventListener('click', e => {
+  if (!e.target.classList.contains('nav-menu')) return;
+  [...document.querySelectorAll('.nav-menu')].forEach($menu => {
+    $menu.classList.toggle('nav-menu-select', $menu === e.target);
+  });
 });
 
 window.addEventListener('DOMContentLoaded', () => {
