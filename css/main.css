@@ -447,3 +447,37 @@ button.badge {
 .goal-rewards > input::placeholder {
   color: #ccc;
 }
+
+@media screen and (max-width: 768px) {
+  .goal-container {
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .goal-form {
+  }
+
+  .goal-interface {
+    width: 80vw;
+  }
+
+  .goal-list-container {
+    height: 35vh;
+  }
+
+  .goal-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .goal-list-item {
+    width: 200px;
+  }
+
+  .goal-grid {
+    --grid-item-width: 6vw;
+  }
+}
