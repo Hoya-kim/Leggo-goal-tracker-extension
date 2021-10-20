@@ -1,16 +1,7 @@
-const $nickname = document.getElementById('nickname');
-const $submit = document.querySelector('.submit');
-const $reroll = document.querySelector('.reroll');
-
 let nicknameWords = {};
 let avatarComponentInfo = {};
 
-const userInfo = {
-  color: '',
-  eyes: 0,
-  mouth: 0,
-  nickname: '',
-};
+const userInfo = {};
 
 const getRandomNumber = maxNum => Math.floor(Math.random() * maxNum);
 
@@ -23,7 +14,7 @@ const getRandomNickname = () => {
 
 const setRandomNickname = () => {
   const nickname = getRandomNickname();
-  $nickname.value = nickname;
+  document.getElementById('nickname').value = nickname;
   userInfo.nickname = nickname;
 };
 
@@ -34,12 +25,10 @@ const setRandomAvatar = () => {
 
   document.documentElement.style.setProperty('--face-color', `var(${randColor.face})`);
   document.documentElement.style.setProperty('--face-border-color', `var(${randColor.border})`);
-  document.querySelector('.avatar-eyes').style[
-    'background-image'
-  ] = `url(../images/avatar/${randEyes})`;
-  document.querySelector('.avatar-mouth').style[
-    'background-image'
-  ] = `url(../images/avatar/${randMouth})`;
+  document.querySelector('.avatar-eyes').style['background-image'] =
+    'url(../images/avatar/' + randEyes;
+  document.querySelector('.avatar-mouth').style['background-image'] =
+    'url(../images/avatar/' + randMouth;
 
   [userInfo.color, userInfo.eyes, userInfo.mouth] = [randColor, randEyes, randMouth];
 };
@@ -69,12 +58,12 @@ window.addEventListener('DOMContentLoaded', () => {
   fetchAndInitAvatarInfo();
 });
 
-$submit.onclick = () => {
+document.querySelector('.submit').onclick = () => {
   localStorage.setItem('userInfo', JSON.stringify(userInfo));
   window.location.href = './pages/main.html';
 };
 
-$reroll.onclick = () => {
+document.querySelector('.reroll').onclick = () => {
   setRandomNickname();
   setRandomAvatar();
 };
