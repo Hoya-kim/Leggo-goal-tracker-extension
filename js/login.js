@@ -1,5 +1,7 @@
 let nicknameWords = {};
 let avatarComponentInfo = {};
+const IMAGE_SPRITE_NUMBERS_OF_EYES = 6;
+const IMAGE_SPRITE_NUMBERS_OF_MOUTH = 5;
 
 const userInfo = {};
 
@@ -26,25 +28,30 @@ const setAvatar = toChangeAvatar => {
     ? JSON.parse(localStorage.getItem('userInfo')).color
     : avatarComponentInfo.color[getRandomNumber(avatarComponentInfo.color.length)];
 
-  const eyes = toChangeAvatar
-    ? JSON.parse(localStorage.getItem('userInfo')).eyes
-    : avatarComponentInfo.eyes[getRandomNumber(avatarComponentInfo.eyes.length)];
+  const randEyesIndex = getRandomNumber(IMAGE_SPRITE_NUMBERS_OF_EYES);
+  const randMouthIndex = getRandomNumber(IMAGE_SPRITE_NUMBERS_OF_MOUTH);
 
-  const mouth = toChangeAvatar
+  const eyesIndex = toChangeAvatar
+    ? JSON.parse(localStorage.getItem('userInfo')).eyes
+    : getRandomNumber(IMAGE_SPRITE_NUMBERS_OF_EYES);
+
+  const mouthIndex = toChangeAvatar
     ? JSON.parse(localStorage.getItem('userInfo')).mouth
-    : avatarComponentInfo.mouth[getRandomNumber(avatarComponentInfo.mouth.length)];
+    : getRandomNumber(IMAGE_SPRITE_NUMBERS_OF_MOUTH);
 
   document.documentElement.style.setProperty('--face-color', `var(${color.face})`);
   document.documentElement.style.setProperty('--face-border-color', `var(${color.border})`);
-  document.querySelector('.avatar-eyes').style['background-image'] = 'url(../images/avatar/' + eyes;
-  document.querySelector('.avatar-mouth').style['background-image'] =
-    'url(../images/avatar/' + mouth;
 
-  [userInfo.color, userInfo.eyes, userInfo.mouth] = [color, eyes, mouth];
+  document.documentElement.style.setProperty('--eyes-number', IMAGE_SPRITE_NUMBERS_OF_EYES - 1);
+  document.documentElement.style.setProperty('--eyes-index', eyesIndex);
+  document.documentElement.style.setProperty('--mouth-number', IMAGE_SPRITE_NUMBERS_OF_MOUTH - 1);
+  document.documentElement.style.setProperty('--mouth-index', mouthIndex);
+
+  [userInfo.color, userInfo.eyes, userInfo.mouth] = [color, eyesIndex, mouthIndex];
 };
 
 const fetchAndInitNickname = () => {
-  fetch('../nickname.json')
+  fetch('../db/nickname.json')
     .then(response => response.json())
     .then(json => {
       nicknameWords = json;
@@ -55,7 +62,7 @@ const fetchAndInitNickname = () => {
 };
 
 const fetchAndInitAvatarInfo = () => {
-  fetch('../avatarComponentInfo.json')
+  fetch('../db/avatarComponentInfo.json')
     .then(response => response.json())
     .then(json => {
       avatarComponentInfo = json;
