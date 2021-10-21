@@ -1,9 +1,9 @@
-import { getParsedFromJSON } from './utils/helper.js';
+import { getParsedFromJSON } from '../utils/helper.js';
 import {
   IMAGE_SPRITE_NUMBERS_OF_EYES,
   IMAGE_SPRITE_NUMBERS_OF_MOUTH,
   MILLISECOND_IN_A_DAY,
-} from './utils/constants.js';
+} from '../utils/constants.js';
 
 const navView = (() => {
   let state = {
