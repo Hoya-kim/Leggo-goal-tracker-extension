@@ -35,7 +35,6 @@
   transform: translate(-50%, -50%);
   width: 20%;
   height: 20%;
-  transition: background-color var(--avatar-transition-time);
 }
 
 .avatar-face {
@@ -44,7 +43,6 @@
   transform: translate(-50%, -50%);
   width: 60%;
   height: 60%;
-  transition: background-color var(--avatar-transition-time);
 }
 
 .avatar-eyes {
