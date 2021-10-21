@@ -28,7 +28,7 @@ const goalView = (() => {
 
   // DOM Nodes for grid
   const $goalGrid = document.querySelector('.goal-grid');
-  const $goalRewards = document.querySelector('.goal-rewards');
+  const $goalRewardsInput = document.querySelector('.goal-rewards > input');
 
   /**
    * Render functions
@@ -86,7 +86,7 @@ const goalView = (() => {
         )
         .join('');
       $goalGrid.innerHTML = `<div id="goal-grid-start" class="goal-grid-item end-point">Start</div>${buttonsHTML}<div class="goal-grid-item end-point">Finish</div>`;
-      $goalRewards.lastElementChild.value = rewards;
+      $goalRewardsInput.value = rewards;
 
       const $hoverLabel = document.querySelector('.hovered-info');
       data.id === -1 ? ($hoverLabel.style.display = 'flex') : ($hoverLabel.style.display = 'none');
@@ -229,9 +229,13 @@ const goalView = (() => {
     };
 
     // Goal Rewards event
-    $goalRewards.onsubmit = e => {
+    document.querySelector('.goal-rewards').onsubmit = e => {
       e.preventDefault();
       updateRewards(e.target.lastElementChild.value);
+    };
+
+    $goalRewardsInput.onblur = e => {
+      updateRewards(e.target.value);
     };
   };
 })();
