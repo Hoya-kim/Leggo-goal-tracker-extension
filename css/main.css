@@ -378,6 +378,61 @@ button.badge {
 .goal-grid-container {
   width: 40%;
   min-width: 400px;
+  position: relative;
+}
+
+.hovered-info {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(1px);
+  z-index: 3;
+}
+
+@keyframes alarm {
+  20% {
+    transform: translateY(-10%) rotateZ(-15deg);
+  }
+  40% {
+    transform: translateY(-5%) rotateZ(-10deg);
+  }
+  50% {
+    transform: translateY(-5%) rotateZ(-20deg);
+  }
+  60% {
+    transform: translateY(-5%) rotateZ(-10deg);
+  }
+  70% {
+    transform: translateY(-5%) rotateZ(-20deg);
+  }
+  100% {
+    transform: translateY(0%) rotateZ(-15deg);
+  }
+}
+
+.info-badge {
+  cursor: default;
+  width: 70%;
+  height: 4rem;
+  line-height: 3rem;
+  background-color: var(--white);
+  font-family: 'Quantico', sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  transform: rotate(-15deg);
+  border-radius: 1rem;
+  color: var(--primary-color);
+  border: 8px double var(--primary-color);
+  animation-name: alarm;
+  animation-duration: 1.7s;
+  animation-delay: 0.2s;
+  animation-iteration-count: infinite;
 }
 
 .goal-grid {
@@ -474,7 +529,7 @@ button.badge {
   color: #ccc;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1150px) {
   .goal-container {
     flex-direction: column;
     width: 100%;

@@ -114,7 +114,7 @@ $goalList.onclick = ({ target }) => {
 
 // constant
 const INITIAL_GOAL_OBJECT = new Goal({
-  id: 1,
+  id: -1,
   name: '',
   days: 30, // num of challenge days
   isAchieve: Array.from({ length: 30 }, () => false),
@@ -141,6 +141,9 @@ const renderGridItem = ({ data }) => {
     .join('');
   $goalGrid.innerHTML = `<div id="goal-grid-start" class="goal-grid-item end-point">Start</div>${buttonsHTML}<div class="goal-grid-item end-point">Finish</div>`;
   $goalRewards.lastElementChild.value = data.rewards;
+
+  const $hoverLabel = document.querySelector('.hovered-info');
+  data.id === -1 ? ($hoverLabel.style.display = 'flex') : ($hoverLabel.style.display = 'none');
 };
 
 /**
