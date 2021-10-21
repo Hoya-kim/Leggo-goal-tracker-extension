@@ -149,6 +149,10 @@ const goalView = (() => {
   };
 
   // Export ------------------------------------------------------------------------------------
+  /**
+   * Initailize goal view
+   * @type {() => {}}
+   */
   return () => {
     initializeGoalView();
 

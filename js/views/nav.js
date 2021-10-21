@@ -92,6 +92,10 @@ const navView = (() => {
   };
 
   // Export ------------------------------------------------------------------------------------
+  /**
+   * Initailize nav view
+   * @type {() => {}}
+   */
   return () => {
     initializeNavView();
 
