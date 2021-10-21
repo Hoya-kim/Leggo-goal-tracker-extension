@@ -518,6 +518,10 @@ button.badge {
   background-color: var(--primary-color);
   color: #fff;
 }
+.day-button:hover.checked {
+  background-color: transparent;
+  color: var(--primary-color);
+}
 .day-button:disabled {
   cursor: not-allowed;
 }
