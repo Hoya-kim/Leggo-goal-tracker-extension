@@ -148,11 +148,11 @@ const goalView = (() => {
     showSelectedGoalGrid();
   };
 
-  // Export
+  // Export ------------------------------------------------------------------------------------
   return () => {
     initializeGoalView();
 
-    // Event Bindings ------------------------------------------------
+    // Event Bindings --------------------------------------------------------------------------
     // Input Goal text event
     document.querySelector('.goal-input-container').onsubmit = e => {
       e.preventDefault();
@@ -172,7 +172,7 @@ const goalView = (() => {
 
     // Input counters events
     $goalDaysInput.onblur = () => {
-      const inputCount = +$goalDaysInput.value;
+      const inputCount = +$goalDaysInput.value || 7;
       $goalDaysInput.value =
         inputCount > MAX_COUNT_GOAL_DAYS
           ? MAX_COUNT_GOAL_DAYS
