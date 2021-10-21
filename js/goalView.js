@@ -8,26 +8,43 @@ import {
   MIN_COUNT_GOAL_DAYS,
 } from './utils/constants.js';
 
-// DOM Nodes
-const $goalInputContainer = document.querySelector('.goal-input-container');
-const $goalNameInput = document.getElementById('goal-name-input');
-const $increase = document.querySelector('.increase');
-const $goalDaysInput = document.getElementById('goal-days-input');
-const $decrease = document.querySelector('.decrease');
-const $goalListContainer = document.querySelector('.goal-list-container');
-const $goalList = document.querySelector('.goal-list');
+// constant
+const SAMPLE_GOAL_OBJECT = new Goal({
+  id: -1,
+  name: '',
+  days: 30, // num of challenge days
+  isAchieve: Array.from({ length: 30 }, (_, idx) => !!(idx % 4) && idx < 11),
+  rewards: '',
+  startDate: new Date() - MILLISECOND_IN_A_DAY * 10,
+});
 
-/**
- * Render
- * @param {Array<Goal>} goalDataList
- */
-const render = goalDataList => {
-  $goalListContainer.firstElementChild.classList.toggle('hidden', goalDataList.length);
+// Closure
+const goalView = (() => {
+  // DOM Nodes for list
+  const $goalDaysInput = document.getElementById('goal-days-input');
+  const $goalListContainer = document.querySelector('.goal-list-container');
+  const $goalList = document.querySelector('.goal-list');
 
-  $goalList.innerHTML = goalDataList
-    .map(({ data: goal }) => {
-      const progress = getProgressPercent(goal.isAchieve);
-      return `<li class="goal-list-item" data-id="${goal.id}">
+  // DOM Nodes for grid
+  const $goalGrid = document.querySelector('.goal-grid');
+  const $goalRewards = document.querySelector('.goal-rewards');
+
+  /**
+   * Render functions
+   *  @type {object}
+   */
+  const render = {
+    /**
+     * Render Goal List
+     * @param {Array<Goal>} goalDataList
+     */
+    goalList(goalDataList) {
+      $goalListContainer.firstElementChild.classList.toggle('hidden', goalDataList.length);
+
+      $goalList.innerHTML = goalDataList
+        .map(({ data: goal }) => {
+          const progress = getProgressPercent(goal.isAchieve);
+          return `<li class="goal-list-item" data-id="${goal.id}">
             <a href="#goal-grid-start">
                 <div class="goal-info">
                     <span class="goal-name">
@@ -44,18 +61,105 @@ const render = goalDataList => {
                 </div>
             </a>
         </li>`;
-    })
-    .join('');
-};
+        })
+        .join('');
+    },
+    /**
+     * render HTML about goal grid
+     * @param {Goal} - response from localStoarge
+     */
+    goalGridItem({ data }) {
+      const { rewards, isAchieve, startDate } = data;
 
-const goalDaysInputValidation = () => {
-  const { value } = $goalDaysInput;
-  return /^\d+$/.test(value) && +value > 2 && +value < 366;
-};
+      const today = Math.floor((new Date() - new Date(startDate)) / MILLISECOND_IN_A_DAY + 1);
 
+      const buttonsHTML = isAchieve
+        .map(
+          (achievement, idx) =>
+            `<button class="goal-grid-item day-button ${achievement ? 'checked' : ''}" ${
+              idx + 1 >= today ? '' : 'disabled'
+            }>
+          ${idx + 1}
+          <div class="day-button-checked"><i class='bx bx-badge-check' ></i></div>
+        </button>`,
+        )
+        .join('');
+      $goalGrid.innerHTML = `<div id="goal-grid-start" class="goal-grid-item end-point">Start</div>${buttonsHTML}<div class="goal-grid-item end-point">Finish</div>`;
+      $goalRewards.lastElementChild.value = rewards;
+
+      const $hoverLabel = document.querySelector('.hovered-info');
+      data.id === -1 ? ($hoverLabel.style.display = 'flex') : ($hoverLabel.style.display = 'none');
+    },
+  };
+
+  /**
+   * Update progressbar UI indicator
+   * @param {Goal}
+   */
+  const updateProgressBar = ({ data }) => {
+    const progress = getProgressPercent(data.isAchieve);
+    const $targetGoalItem = document.querySelector('.goal-list-item.active');
+    $targetGoalItem.querySelector('.progress-indicator').style.width = `${progress}%`;
+    $targetGoalItem.querySelector('.progress-label').textContent = `${progress}%`;
+  };
+
+  return {
+    render,
+    /**
+     * Get selected goal data from localStoarge & Render it
+     */
+    showSelectedGoalGrid() {
+      $goalGrid.style.opacity = 0;
+      const selected = state.getSelectedGoal();
+      render.goalGridItem(!selected.id ? SAMPLE_GOAL_OBJECT : selected);
+      $goalGrid.style.opacity = 1;
+    },
+    /**
+     * Get result of input's validation test
+     * @returns {boolean}
+     */
+    validateGoalDaysInput() {
+      const { value } = $goalDaysInput;
+      return /^\d+$/.test(value) && +value > 2 && +value < 366;
+    },
+    /**
+     * Update new rewards
+     * @param {string} newRewards
+     */
+    updateRewards(newRewards) {
+      const selected = state.getSelectedGoal();
+      selected.rewards = newRewards;
+      state.saveGoalList();
+    },
+    /**
+     * when toggle event triggered, update achievement status
+     * @param {number} dayNum - toggled day's number
+     */
+    toggleDay(dayNum) {
+      const selected = state.getSelectedGoal();
+      selected.toggleAchievementOfDay(dayNum);
+      $goalGrid.children[dayNum + 1].classList.toggle('checked');
+      state.saveGoalList();
+      updateProgressBar(selected);
+    },
+  };
+})();
+
+// DOM Nodes
+const $goalInputContainer = document.querySelector('.goal-input-container');
+const $goalNameInput = document.getElementById('goal-name-input');
+const $increase = document.querySelector('.increase');
+const $decrease = document.querySelector('.decrease');
+const $goalDaysInput = document.getElementById('goal-days-input');
+const $goalList = document.querySelector('.goal-list');
+const $goalGrid = document.querySelector('.goal-grid');
+const $goalRewards = document.querySelector('.goal-rewards');
+
+// Event Bindings
 window.addEventListener('DOMContentLoaded', () => {
   state.fetchGoalList();
-  render(state.getGoalListAll());
+  goalView.render.goalList(state.getGoalListAll());
+  goalView.showSelectedGoalGrid();
 });
 
 $goalInputContainer.onsubmit = e => {
@@ -64,10 +168,10 @@ $goalInputContainer.onsubmit = e => {
   const goalName = $goalNameInput.value.trim();
   const goalDays = Counter.get();
 
-  if (goalName && goalDaysInputValidation()) {
+  if (goalName && goalView.validateGoalDaysInput()) {
     const newGoal = new Goal({ id: state.generateGoalId(), name: goalName, days: goalDays });
     state.addGoalToList(newGoal);
-    render(state.getGoalListAll());
+    goalView.render.goalList(state.getGoalListAll());
     $goalNameInput.value = '';
   } else {
     alert('올바른 입력값을 입력해주세요');
@@ -111,110 +215,21 @@ $goalList.onclick = ({ target }) => {
   }, 1800);
 
   state.setSelectedGoal(+selected.dataset.id);
-  renderSelectedGoal();
+  goalView.showSelectedGoalGrid();
 
   if (target.matches('.goal-delete > i')) {
     state.deleteGoal(+selected.dataset.id);
-    render(state.getGoalListAll());
-    renderGridItem(INITIAL_GOAL_OBJECT);
+    goalView.render.goalList(state.getGoalListAll());
+    goalView.render.goalGridItem(SAMPLE_GOAL_OBJECT);
   }
 };
 
-// constant
-const INITIAL_GOAL_OBJECT = new Goal({
-  id: -1,
-  name: '',
-  days: 30, // num of challenge days
-  isAchieve: Array.from({ length: 30 }, (_, idx) => !!(idx % 4) && idx < 11),
-  rewards: '',
-  startDate: new Date() - MILLISECOND_IN_A_DAY * 10,
-});
-
-// DOM Nodes
-const $goalGrid = document.querySelector('.goal-grid');
-const $goalRewards = document.querySelector('.goal-rewards');
-
-/**
- * render HTML about goal grid
- * @param {Goal} - response from localStoarge
- */
-const renderGridItem = ({ data }) => {
-  const { rewards, isAchieve, startDate } = data;
-
-  const today = Math.floor((new Date() - new Date(startDate)) / MILLISECOND_IN_A_DAY + 1);
-
-  const buttonsHTML = isAchieve
-    .map(
-      (achievement, idx) =>
-        `<button class="goal-grid-item day-button ${achievement ? 'checked' : ''}" ${
-          idx + 1 >= today ? '' : 'disabled'
-        }>
-          ${idx + 1}
-          <div class="day-button-checked"><i class='bx bx-badge-check' ></i></div>
-        </button>`,
-    )
-    .join('');
-  $goalGrid.innerHTML = `<div id="goal-grid-start" class="goal-grid-item end-point">Start</div>${buttonsHTML}<div class="goal-grid-item end-point">Finish</div>`;
-  $goalRewards.lastElementChild.value = rewards;
-
-  const $hoverLabel = document.querySelector('.hovered-info');
-  data.id === -1 ? ($hoverLabel.style.display = 'flex') : ($hoverLabel.style.display = 'none');
-};
-
-/**
- * Get selected goal data from localStoarge
- */
-const renderSelectedGoal = () => {
-  $goalGrid.style.opacity = 0;
-  const selected = state.getSelectedGoal();
-  renderGridItem(!selected.id ? INITIAL_GOAL_OBJECT : selected);
-  $goalGrid.style.opacity = 1;
-};
-
-/**
- * Update new rewards
- * @param {string} newRewards
- */
-const updateRewards = newRewards => {
-  const selected = state.getSelectedGoal();
-  selected.rewards = newRewards;
-  state.saveGoalList();
-};
-
-/**
- * Update progressbar UI indicator
- * @param {Goal}
- */
-const updateProgressBar = ({ data }) => {
-  const progress = getProgressPercent(data.isAchieve);
-  const $targetGoalItem = document.querySelector('.goal-list-item.active');
-  $targetGoalItem.querySelector('.progress-indicator').style.width = `${progress}%`;
-  $targetGoalItem.querySelector('.progress-label').textContent = `${progress}%`;
-};
-
-/**
- * when toggle event triggered, update achievement status
- * @param {number} dayNum - toggled day's number
- */
-const toggleDay = dayNum => {
-  const selected = state.getSelectedGoal();
-  selected.toggleAchievementOfDay(dayNum);
-  $goalGrid.children[dayNum + 1].classList.toggle('checked');
-  state.saveGoalList();
-  updateProgressBar(selected);
-};
-
-// Event Bindings
 $goalRewards.onsubmit = e => {
   e.preventDefault();
-  updateRewards(e.target.lastElementChild.value);
+  goalView.updateRewards(e.target.lastElementChild.value);
 };
 
 $goalGrid.onclick = e => {
   if (!e.target.classList.contains('day-button')) return;
-  toggleDay(+e.target.textContent - 1);
+  goalView.toggleDay(+e.target.textContent - 1);
 };
-
-window.addEventListener('DOMContentLoaded', () => {
-  renderSelectedGoal();
-});
