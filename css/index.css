@@ -5,6 +5,7 @@ body {
   /* background-image: url(../images/leggo_bg_white.png);
   background-size: 40vw;
   background-repeat: repeat; */
+  opacity: 0;
 }
 
 /* 헤더 */
