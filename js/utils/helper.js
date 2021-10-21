@@ -20,3 +20,10 @@ export const setDataToJSON = (key, value) => localStorage.setItem(key, JSON.stri
  */
 export const getProgressPercent = isAchieve =>
   Math.floor((isAchieve.filter(isTrue => isTrue).length / isAchieve.length) * 100);
+
+/**
+ * Get random Interger within {0 ~ maxNum - 1}
+ * @param {number} maxNum
+ * @returns {number}
+ */
+export const getRandomNumber = maxNum => Math.floor(Math.random() * maxNum);

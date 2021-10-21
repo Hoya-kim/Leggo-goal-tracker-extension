@@ -1,8 +1,5 @@
 import { getParsedFromJSON } from './utils/helper.js';
-
-// Constants
-const IMAGE_SPRITE_NUMBERS_OF_EYES = 6;
-const IMAGE_SPRITE_NUMBERS_OF_MOUTH = 5;
+import { IMAGE_SPRITE_NUMBERS_OF_EYES, IMAGE_SPRITE_NUMBERS_OF_MOUTH } from './utils/constants.js';
 
 let state = {
   isNavigationOpened: false,
@@ -27,15 +24,15 @@ const render = () => {
     $el.classList.toggle('notransition', state.isInitRender),
   );
 
-  const $root = document.documentElement;
+  const rootStyle = document.documentElement.style;
   const { color, eyes, mouth, nickname } = getParsedFromJSON('userInfo');
   // 아바타
-  $root.style.setProperty('--face-color', `var(${color.face})`);
-  $root.style.setProperty('--face-border-color', `var(${color.border})`);
-  $root.style.setProperty('--eyes-index', eyes);
-  $root.style.setProperty('--mouth-index', mouth);
-  $root.style.setProperty('--eyes-number', IMAGE_SPRITE_NUMBERS_OF_EYES - 1);
-  $root.style.setProperty('--mouth-number', IMAGE_SPRITE_NUMBERS_OF_MOUTH - 1);
+  rootStyle.setProperty('--face-color', `var(${color.face})`);
+  rootStyle.setProperty('--face-border-color', `var(${color.border})`);
+  rootStyle.setProperty('--eyes-index', eyes);
+  rootStyle.setProperty('--mouth-index', mouth);
+  rootStyle.setProperty('--eyes-number', IMAGE_SPRITE_NUMBERS_OF_EYES - 1);
+  rootStyle.setProperty('--mouth-number', IMAGE_SPRITE_NUMBERS_OF_MOUTH - 1);
   // 닉네임
   [$navNickname.textContent, $headerNickname.textContent] = [nickname, nickname];
 };
