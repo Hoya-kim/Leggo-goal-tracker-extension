@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 // TODO:
 // - 순서 교정하기
+=======
+>>>>>>> 459685069267deec06619c2a6cf754f74b8c5df0
 const IMAGE_SPRITE_NUMBERS_OF_EYES = 6;
 const IMAGE_SPRITE_NUMBERS_OF_MOUTH = 5;
 
@@ -16,6 +19,7 @@ const $nav = document.querySelector('nav');
 const $navNickname = document.querySelector('.nav-nickname');
 const $goalContainer = document.querySelector('.goal-container');
 const $navMenuList = document.querySelector('.nav-menu-list');
+const $navMenuCommingsoon = document.querySelector('.nav-menu-commingsoon');
 
 const render = () => {
   state.isNavigationOpend === true
@@ -46,6 +50,19 @@ const render = () => {
     '--mouth-index',
     JSON.parse(localStorage.getItem('userInfo')).mouth,
   );
+<<<<<<< HEAD
+=======
+
+  // const { eyes } = JSON.parse(localStorage.getItem('userInfo'));
+  // [...$avatarEyes].forEach($el => {
+  //   $el.style['background-image'] = `url(../images/avatar/${eyes})`;
+  // });
+
+  // const { mouth } = JSON.parse(localStorage.getItem('userInfo'));
+  // [...$avatarMouth].forEach($el => {
+  //   $el.style['background-image'] = `url(../images/avatar/${mouth})`;
+  // });
+>>>>>>> 459685069267deec06619c2a6cf754f74b8c5df0
 
   // 닉네임
   $navNickname.innerHTML = JSON.parse(localStorage.getItem('userInfo')).nickname;
@@ -69,10 +86,18 @@ window.addEventListener('keyup', e => {
 });
 
 $navMenuList.addEventListener('click', e => {
-  if (!e.target.classList.contains('nav-menu')) return;
+  if (
+    !e.target.classList.contains('nav-menu') ||
+    e.target.classList.contains('nav-menu-commingsoon')
+  )
+    return;
   [...document.querySelectorAll('.nav-menu')].forEach($menu => {
     $menu.classList.toggle('nav-menu-select', $menu === e.target);
   });
+});
+
+$navMenuCommingsoon.addEventListener('click', () => {
+  alert('comming soon..');
 });
 
 window.addEventListener('DOMContentLoaded', () => {

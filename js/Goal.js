@@ -5,6 +5,7 @@
  * @property {number} days
  * @property {Array} isAchieve
  * @property {string} rewards
+ * @property {Date} startDate
  */
 
 export default class Goal {
@@ -23,13 +24,17 @@ export default class Goal {
   /** @type {string} */
   #rewards;
 
+  /** @type {Date} */
+  #startDate;
+
   /** @type {(id: number, name: string, days: number) => Goal}} */
-  constructor({ id, name, days, isAchieve = [], rewards = '' }) {
+  constructor({ id, name, days, isAchieve = [], rewards = '', startDate = new Date() }) {
     this.#id = +id;
     this.#name = name;
     this.#days = +days;
     this.#isAchieve = isAchieve.length ? isAchieve : Array(+days).fill(false);
     this.#rewards = rewards;
+    this.#startDate = startDate;
   }
 
   get id() {
@@ -47,6 +52,7 @@ export default class Goal {
       days: this.#days,
       isAchieve: [...this.#isAchieve],
       rewards: this.#rewards,
+      startDate: this.#startDate,
     };
   }
 
@@ -74,4 +80,5 @@ export default class Goal {
 // 	days: 7,  // num of challenge days
 // 	isAchieve: [false, false, false, true, false, false, false],
 //   rewards: '야식으로 치킨 조지기',
+//  startDate: new Date()
 // }
