@@ -1,5 +1,3 @@
-// TODO:
-// - 순서 교정하기
 const IMAGE_SPRITE_NUMBERS_OF_EYES = 6;
 const IMAGE_SPRITE_NUMBERS_OF_MOUTH = 5;
 
@@ -18,6 +16,7 @@ const $avatarMouth = document.querySelectorAll('.avatar-mouth');
 const $navNickname = document.querySelector('.nav-nickname');
 const $goalContainer = document.querySelector('.goal-container');
 const $navMenuList = document.querySelector('.nav-menu-list');
+const $navMenuCommingsoon = document.querySelector('.nav-menu-commingsoon');
 
 const render = () => {
   state.isNavigationOpend === true
@@ -81,10 +80,18 @@ window.addEventListener('keyup', e => {
 });
 
 $navMenuList.addEventListener('click', e => {
-  if (!e.target.classList.contains('nav-menu')) return;
+  if (
+    !e.target.classList.contains('nav-menu') ||
+    e.target.classList.contains('nav-menu-commingsoon')
+  )
+    return;
   [...document.querySelectorAll('.nav-menu')].forEach($menu => {
     $menu.classList.toggle('nav-menu-select', $menu === e.target);
   });
+});
+
+$navMenuCommingsoon.addEventListener('click', () => {
+  alert('comming soon..');
 });
 
 window.addEventListener('DOMContentLoaded', () => {
