@@ -1,5 +1,5 @@
 import Goal from './Goal.js';
-import { setDataToJSON, getParsedFromJSON } from './utils/helper.js';
+import { setDataToJSON, getParsedFromJSON } from '../utils/helper.js';
 
 const state = (() => {
   /** @type {Array<Goal>} */
