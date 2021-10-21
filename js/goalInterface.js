@@ -44,12 +44,12 @@ const Counter = (() => {
 
   return {
     increase() {
-      $goalDaysInput.value =
-        $goalDaysInput.value < 99 ? +$goalDaysInput.value + 1 : $goalDaysInput.value;
+      const { value } = $goalDaysInput;
+      $goalDaysInput.value = value < 366 ? +value + 1 : value;
     },
     decrease() {
-      $goalDaysInput.value =
-        $goalDaysInput.value > 3 ? $goalDaysInput.value - 1 : $goalDaysInput.value;
+      const { value } = $goalDaysInput;
+      $goalDaysInput.value = value > 3 ? value - 1 : value;
     },
   };
 })();
