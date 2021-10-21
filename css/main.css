@@ -69,7 +69,8 @@ a {
 .header-nickname {
   padding: 0 10px 0 5px;
 }
-.header-level {
+
+.badge {
   background: var(--primary-color);
   padding: 6px 10px;
   display: block;
@@ -189,7 +190,8 @@ a {
 /* goal-interface */
 
 .goal-interface {
-  width: 350px;
+  /* width: 350px; */
+  width: 30vw;
 }
 
 .goal-interface input {
@@ -197,53 +199,61 @@ a {
   outline: 0;
 }
 
-.goal-form {
+.goal-input-container {
+  font-size: 1.25rem;
+}
+
+.goal-input-container > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid var(--black);
-  font-size: 1.25rem;
+  padding: 20px 0 10px;
+  margin-bottom: 10px;
 }
 
-.goal-name-input > input {
-  width: 11.5em;
-  padding: 6px 3px;
-  margin: 6px 3px;
-  font-size: 1rem;
+.goal-input-container label {
+  width: 20.9%;
 }
 
-.goal-name-input > input::placeholder {
+.goal-input-container input {
+  width: 61%;
+}
+
+.goal-input-container input::placeholder {
   color: #ccc;
 }
 
-.goal-days-input {
+.goal-input-container > div > *:last-child {
+  width: 16.1%;
+}
+
+.goal-days-control {
   display: flex;
-  align-items: center;
-  padding: 10px 0;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 1rem;
 }
 
-.goal-days-input > input {
-  width: 2.4em;
-  height: 2.4em;
-  border-radius: 50%;
-  padding: 0;
-  background: var(--secondary-color);
-  text-align: center;
-  font-size: 0.8rem;
-  padding-top: 2px;
-}
-
-.goal-days-input > button {
-  display: inherit;
+.goal-days-control > button {
   border: 0;
   background: transparent;
-  padding: 0;
   cursor: pointer;
+  height: 16px;
+  padding: 0;
+  color: var(--primary-color);
+}
+
+button.badge {
+  border: 0;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 .goal-list-container {
-  padding-top: 60px;
   text-align: center;
+  height: 55vh;
+  overflow: scroll;
 }
 
 .goal-list {
@@ -276,6 +286,7 @@ a {
   justify-content: space-between;
   padding: 17px;
   color: inherit;
+  position: relative;
 }
 
 .goal-name {
@@ -285,6 +296,26 @@ a {
 .goal-list-item.active .progress-bar {
   background-color: var(--gray2);
   height: 30px;
+}
+
+.goal-list-item.active .goal-days {
+  opacity: 0;
+}
+
+.goal-delete {
+  border: 0;
+  background: transparent;
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  opacity: 0;
+  cursor: pointer;
+  font-size: 1.25rem;
+  color: inherit;
+}
+
+.goal-list-item.active .goal-delete {
+  opacity: 1;
 }
 
 .progress-bar {
@@ -297,6 +328,7 @@ a {
   width: 70%;
   height: inherit;
   background-color: var(--secondary-color);
+  transition: width 0.4s;
 }
 
 .goal-list-item.active .progress-label {
@@ -314,7 +346,7 @@ a {
 }
 
 .hidden {
-  display: none;
+  opacity: 0;
 }
 
 /* goal-grid */
@@ -325,12 +357,27 @@ a {
 
 .goal-grid {
   display: grid;
-  gap: 2px;
+  gap: 0.1vw 0.1vw;
   grid-template-columns: repeat(9, 1fr);
-  --grid-item-width: 45px;
+  --grid-item-width: 3.5vw;
   opacity: 0;
   /* transition: all 300ms; */
+  max-height: 65vh;
+  overflow-y: scroll;
+  overflow-x: visible;
 }
+
+.scroll-gradient {
+  background: linear-gradient(transparent 33%, rgba(255, 255, 255, 0)),
+    linear-gradient(rgba(255, 255, 255, 0), transparent 66%) 0 100%,
+    radial-gradient(farthest-side at 50% 0, rgba(86, 82, 72, 0.5), rgba(0, 0, 0, 0)),
+    radial-gradient(farthest-side at 50% 100%, rgba(86, 82, 72, 0.5), rgba(0, 0, 0, 0)) 0 100%;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-attachment: local, local, scroll, scroll;
+  background-size: 100% 66px, 100% 66px, 100% 22px, 100% 22px;
+}
+
 .goal-grid-item {
   padding: 0;
   background-color: transparent;
@@ -363,8 +410,11 @@ a {
   border-radius: 50%;
   align-self: center;
   color: #fff;
+  font-family: 'Quantico', sans-serif;
 }
+
 .day-button-checked {
+  font-size: 1.5rem;
   position: absolute;
   z-index: -1;
   width: calc(var(--grid-item-width) * 0.55);
@@ -373,10 +423,11 @@ a {
   top: 65%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background-color: transparent;
+  color: transparent;
 }
-.checked {
-  background-color: var(--secondary-color);
+
+.checked > .day-button-checked {
+  color: var(--primary-color);
 }
 
 .goal-rewards {
@@ -396,4 +447,38 @@ a {
 
 .goal-rewards > input::placeholder {
   color: #ccc;
+}
+
+@media screen and (max-width: 768px) {
+  .goal-container {
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .goal-form {
+  }
+
+  .goal-interface {
+    width: 80vw;
+  }
+
+  .goal-list-container {
+    height: 35vh;
+  }
+
+  .goal-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .goal-list-item {
+    width: 200px;
+  }
+
+  .goal-grid {
+    --grid-item-width: 6vw;
+  }
 }

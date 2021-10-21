@@ -12,3 +12,11 @@ export const getParsedFromJSON = key => JSON.parse(localStorage.getItem(key));
  * @param {string} value - be setted with key
  */
 export const setDataToJSON = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+
+/**
+ * Get percent of Goal's progress
+ * @param {Array<boolean>} isAchieve
+ * @returns {number}
+ */
+export const getProgressPercent = isAchieve =>
+  Math.floor((isAchieve.filter(isTrue => isTrue).length / isAchieve.length) * 100);
