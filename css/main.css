@@ -355,12 +355,12 @@ button.badge {
 }
 
 .goal-delete {
+  display: none;
   border: 0;
   background: transparent;
   position: absolute;
   top: 19px;
   right: 13px;
-  opacity: 0;
   cursor: pointer;
   font-size: 1.25rem;
   color: inherit;
@@ -377,7 +377,7 @@ button.badge {
 }
 
 .goal-list-item.active .goal-delete {
-  opacity: 1;
+  display: block;
 }
 
 .progress-bar {
