@@ -13,4 +13,8 @@ window.addEventListener('DOMContentLoaded', () => {
   setThemes();
   goalView();
   navView();
+
+  setTimeout(() => {
+    document.body.style.opacity = 1;
+  }, 300);
 });

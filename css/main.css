@@ -11,7 +11,7 @@ header {
 body {
   min-width: 1200px;
   overflow: scroll;
-  /* opacity: 0; */
+  opacity: 0;
   font-family: 'Quantico', sans-serif;
 }
 
