@@ -7,6 +7,7 @@ import {
   MAX_COUNT_GOAL_DAYS,
   MIN_COUNT_GOAL_DAYS,
 } from '../utils/constants.js';
+import explode from '../utils/explosion.js';
 
 // constant
 const SAMPLE_GOAL_OBJECT = new Goal({
@@ -226,6 +227,15 @@ const goalView = (() => {
     $goalGrid.onclick = e => {
       if (!e.target.classList.contains('day-button')) return;
       toggleDay(+e.target.textContent - 1);
+
+      // explode animation
+      const primary = getComputedStyle(document.documentElement).getPropertyValue(
+        '--primary-color',
+      );
+      const secondary = getComputedStyle(document.documentElement).getPropertyValue(
+        '--secondary-color',
+      );
+      explode(e.pageX, e.pageY, [primary, secondary]);
     };
 
     // Goal Rewards event
