@@ -1,7 +1,14 @@
 import Goal from './Goal.js';
 import state from './state.js';
+import Counter from './models/Counter.js';
 import { getProgressPercent } from './utils/helper.js';
+import {
+  MILLISECOND_IN_A_DAY,
+  MAX_COUNT_GOAL_DAYS,
+  MIN_COUNT_GOAL_DAYS,
+} from './utils/constants.js';
 
+// DOM Nodes
 const $goalInputContainer = document.querySelector('.goal-input-container');
 const $goalNameInput = document.getElementById('goal-name-input');
 const $increase = document.querySelector('.increase');
@@ -10,13 +17,17 @@ const $decrease = document.querySelector('.decrease');
 const $goalListContainer = document.querySelector('.goal-list-container');
 const $goalList = document.querySelector('.goal-list');
 
+/**
+ * Render
+ * @param {Array<Goal>} goalDataList
+ */
 const render = goalDataList => {
   $goalListContainer.firstElementChild.classList.toggle('hidden', goalDataList.length);
 
   $goalList.innerHTML = goalDataList
-    .map(
-      ({ data: goal }) =>
-        `<li class="goal-list-item" data-id="${goal.id}">
+    .map(({ data: goal }) => {
+      const progress = getProgressPercent(goal.isAchieve);
+      return `<li class="goal-list-item" data-id="${goal.id}">
             <a href="#goal-grid-start">
                 <div class="goal-info">
                     <span class="goal-name">
@@ -28,35 +39,17 @@ const render = goalDataList => {
                     </button>
                 </div>
                 <div class="progress-bar">
-                    <div class="progress-indicator" style="width:${getProgressPercent(
-                      goal.isAchieve,
-                    )}%;"></div>
-                    <span class="progress-label">${getProgressPercent(goal.isAchieve)}%</span>
+                    <div class="progress-indicator" style="width:${progress}%;"></div>
+                    <span class="progress-label">${progress}%</span>
                 </div>
             </a>
-        </li>`,
-    )
+        </li>`;
+    })
     .join('');
 };
 
-const Counter = (() => {
-  const $goalDaysInput = document.getElementById('goal-days-input');
-
-  return {
-    increase() {
-      const { value } = $goalDaysInput;
-      $goalDaysInput.value = value < 366 ? +value + 1 : value;
-    },
-    decrease() {
-      const { value } = $goalDaysInput;
-      $goalDaysInput.value = value > 3 ? value - 1 : value;
-    },
-  };
-})();
-
 const goalDaysInputValidation = () => {
   const { value } = $goalDaysInput;
-
   return /^\d+$/.test(value) && +value > 2 && +value < 366;
 };
 
@@ -69,7 +62,7 @@ $goalInputContainer.onsubmit = e => {
   e.preventDefault();
 
   const goalName = $goalNameInput.value.trim();
-  const goalDays = $goalDaysInput.value;
+  const goalDays = Counter.get();
 
   if (goalName && goalDaysInputValidation()) {
     const newGoal = new Goal({ id: state.generateGoalId(), name: goalName, days: goalDays });
@@ -81,9 +74,24 @@ $goalInputContainer.onsubmit = e => {
   }
 };
 
-$decrease.onclick = Counter.decrease;
+$goalDaysInput.onblur = () => {
+  const inputCount = +$goalDaysInput.value;
+  $goalDaysInput.value =
+    inputCount > MAX_COUNT_GOAL_DAYS
+      ? MAX_COUNT_GOAL_DAYS
+      : inputCount < MIN_COUNT_GOAL_DAYS
+      ? MIN_COUNT_GOAL_DAYS
+      : inputCount;
+  Counter.set(+$goalDaysInput.value);
+};
 
-$increase.onclick = Counter.increase;
+$decrease.onclick = () => {
+  $goalDaysInput.value = Counter.decrease();
+};
+
+$increase.onclick = () => {
+  $goalDaysInput.value = Counter.increase();
+};
 
 $goalList.onclick = ({ target }) => {
   if (!target.closest('li')) return;
@@ -119,7 +127,7 @@ const INITIAL_GOAL_OBJECT = new Goal({
   days: 30, // num of challenge days
   isAchieve: Array.from({ length: 30 }, (_, idx) => !!(idx % 4) && idx < 11),
   rewards: '',
-  startDate: new Date() - 24 * 60 * 60 * 1000 * 10,
+  startDate: new Date() - MILLISECOND_IN_A_DAY * 10,
 });
 
 // DOM Nodes
@@ -133,7 +141,7 @@ const $goalRewards = document.querySelector('.goal-rewards');
 const renderGridItem = ({ data }) => {
   const { rewards, isAchieve, startDate } = data;
 
-  const today = Math.floor((new Date() - new Date(startDate)) / (24 * 60 * 60 * 1000) + 1);
+  const today = Math.floor((new Date() - new Date(startDate)) / MILLISECOND_IN_A_DAY + 1);
 
   const buttonsHTML = isAchieve
     .map(
