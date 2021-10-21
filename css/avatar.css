@@ -2,6 +2,13 @@
   --avatar-container-width: 300px;
   --eyes-width: 35%;
   --mouth-width: 25%;
+  --eyes-number: 6;
+  --mouth-number: 5;
+  --avatar-transition-time: 0.3s;
+  --eyes-index: 0;
+  --eyes-number: 0;
+  --mouth-index: 0;
+  --mouth-number: 0;
 
   --face-border-color: var(--primary-color);
   --face-color: var(--secondary-color);
@@ -28,6 +35,7 @@
   transform: translate(-50%, -50%);
   width: 20%;
   height: 20%;
+  transition: background-color var(--avatar-transition-time);
 }
 
 .avatar-face {
@@ -36,22 +44,30 @@
   transform: translate(-50%, -50%);
   width: 60%;
   height: 60%;
+  transition: background-color var(--avatar-transition-time);
 }
 
 .avatar-eyes {
   width: var(--eyes-width);
-  height: calc(220 * var(--eyes-width) / 792);
+  height: calc(var(--eyes-width) * 220 / 792);
   top: 48%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-image: url('../images/avatar/css_sprites_eyes.png');
+  background-position-y: calc(100% / var(--eyes-number) * var(--eyes-index));
+  transition: background-position-y var(--avatar-transition-time);
 }
 
 .avatar-mouth {
   width: var(--mouth-width);
-  height: calc(270 * var(--mouth-width) / 545);
+  height: calc(var(--mouth-width) / 2);
   top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-image: url('../images/avatar/css_sprites_mouth.png');
+  background-position-y: calc(100% / var(--mouth-number) * var(--mouth-index));
+  transition: background-position-y var(--avatar-transition-time);
+  transition-delay: var(--avatar-transition-time);
 }
 
 .avatar-horn,

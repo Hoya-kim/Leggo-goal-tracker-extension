@@ -1,5 +1,7 @@
 // TODO:
 // - 순서 교정하기
+const IMAGE_SPRITE_NUMBERS_OF_EYES = 6;
+const IMAGE_SPRITE_NUMBERS_OF_MOUTH = 5;
 
 let state = {
   isNavigationOpend: false,
@@ -36,15 +38,26 @@ const render = () => {
     `var(${JSON.parse(localStorage.getItem('userInfo')).color.border})`,
   );
 
-  const { eyes } = JSON.parse(localStorage.getItem('userInfo'));
-  [...$avatarEyes].forEach($el => {
-    $el.style['background-image'] = `url(../images/avatar/${eyes})`;
-  });
+  document.documentElement.style.setProperty('--eyes-number', IMAGE_SPRITE_NUMBERS_OF_EYES - 1);
+  document.documentElement.style.setProperty(
+    '--eyes-index',
+    JSON.parse(localStorage.getItem('userInfo')).eyes,
+  );
+  document.documentElement.style.setProperty('--mouth-number', IMAGE_SPRITE_NUMBERS_OF_MOUTH - 1);
+  document.documentElement.style.setProperty(
+    '--mouth-index',
+    JSON.parse(localStorage.getItem('userInfo')).mouth,
+  );
 
-  const { mouth } = JSON.parse(localStorage.getItem('userInfo'));
-  [...$avatarMouth].forEach($el => {
-    $el.style['background-image'] = `url(../images/avatar/${mouth})`;
-  });
+  // const { eyes } = JSON.parse(localStorage.getItem('userInfo'));
+  // [...$avatarEyes].forEach($el => {
+  //   $el.style['background-image'] = `url(../images/avatar/${eyes})`;
+  // });
+
+  // const { mouth } = JSON.parse(localStorage.getItem('userInfo'));
+  // [...$avatarMouth].forEach($el => {
+  //   $el.style['background-image'] = `url(../images/avatar/${mouth})`;
+  // });
 
   // 닉네임
   $navNickname.innerHTML = JSON.parse(localStorage.getItem('userInfo')).nickname;
