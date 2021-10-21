@@ -1,6 +1,12 @@
 @import url(./color.css);
 @import url(./avatar.css);
 
+body {
+  /* background-image: url(../images/leggo_bg_white.png);
+  background-size: 40vw;
+  background-repeat: repeat; */
+}
+
 /* 헤더 */
 .header-logo {
   position: absolute;

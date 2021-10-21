@@ -49,7 +49,7 @@
 
 .avatar-eyes {
   width: var(--eyes-width);
-  height: calc(var(--eyes-width) * 220 / 792);
+  height: calc(var(--eyes-width) * 270 / 792);
   top: 48%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -59,7 +59,7 @@
 
 .avatar-mouth {
   width: var(--mouth-width);
-  height: calc(var(--mouth-width) / 2);
+  height: calc(var(--mouth-width) * 297 / 540);
   top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
