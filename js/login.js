@@ -44,7 +44,7 @@ const setAvatar = toChangeAvatar => {
 };
 
 const fetchAndInitNickname = () => {
-  fetch('../nickname.json')
+  fetch('../db/nickname.json')
     .then(response => response.json())
     .then(json => {
       nicknameWords = json;
@@ -55,7 +55,7 @@ const fetchAndInitNickname = () => {
 };
 
 const fetchAndInitAvatarInfo = () => {
-  fetch('../avatarComponentInfo.json')
+  fetch('../db/avatarComponentInfo.json')
     .then(response => response.json())
     .then(json => {
       avatarComponentInfo = json;
