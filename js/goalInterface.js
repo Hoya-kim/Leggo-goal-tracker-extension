@@ -11,7 +11,7 @@ const $goalListContainer = document.querySelector('.goal-list-container');
 const $goalList = document.querySelector('.goal-list');
 
 const render = goalDataList => {
-  if (goalDataList.length) $goalListContainer.firstElementChild.classList.add('hidden');
+  $goalListContainer.firstElementChild.classList.toggle('hidden', goalDataList.length);
 
   $goalList.innerHTML = goalDataList
     .map(
@@ -97,6 +97,12 @@ $goalList.onclick = ({ target }) => {
 
   state.setSelectedGoal(+target.closest('li').dataset.id);
   renderSelectedGoal();
+
+  if (target.matches('.goal-delete > i')) {
+    state.deleteGoal(+target.closest('li').dataset.id);
+    render(state.getGoalListAll());
+    renderGridItem(INITIAL_GOAL_OBJECT);
+  }
 };
 
 // constant
