@@ -24,6 +24,7 @@ const goalView = (() => {
   const $goalDaysInput = document.getElementById('goal-days-input');
   const $goalListContainer = document.querySelector('.goal-list-container');
   const $goalList = document.querySelector('.goal-list');
+  const $goalNameInput = document.getElementById('goal-name-input');
 
   // DOM Nodes for grid
   const $goalGrid = document.querySelector('.goal-grid');
@@ -103,133 +104,132 @@ const goalView = (() => {
     $targetGoalItem.querySelector('.progress-label').textContent = `${progress}%`;
   };
 
-  return {
-    render,
-    /**
-     * Get selected goal data from localStoarge & Render it
-     */
-    showSelectedGoalGrid() {
-      $goalGrid.style.opacity = 0;
-      const selected = state.getSelectedGoal();
-      render.goalGridItem(!selected.id ? SAMPLE_GOAL_OBJECT : selected);
-      $goalGrid.style.opacity = 1;
-    },
-    /**
-     * Get result of input's validation test
-     * @returns {boolean}
-     */
-    validateGoalDaysInput() {
-      const { value } = $goalDaysInput;
-      return /^\d+$/.test(value) && +value > 2 && +value < 366;
-    },
-    /**
-     * Update new rewards
-     * @param {string} newRewards
-     */
-    updateRewards(newRewards) {
-      const selected = state.getSelectedGoal();
-      selected.rewards = newRewards;
-      state.saveGoalList();
-    },
-    /**
-     * when toggle event triggered, update achievement status
-     * @param {number} dayNum - toggled day's number
-     */
-    toggleDay(dayNum) {
-      const selected = state.getSelectedGoal();
-      selected.toggleAchievementOfDay(dayNum);
-      $goalGrid.children[dayNum + 1].classList.toggle('checked');
-      state.saveGoalList();
-      updateProgressBar(selected);
-    },
+  /**
+   * Get selected goal data from localStoarge & Render it
+   */
+  const showSelectedGoalGrid = () => {
+    $goalGrid.style.opacity = 0;
+    const selected = state.getSelectedGoal();
+    render.goalGridItem(!selected.id ? SAMPLE_GOAL_OBJECT : selected);
+    $goalGrid.style.opacity = 1;
+  };
+  /**
+   * Get result of input's validation test
+   * @returns {boolean}
+   */
+  const validateGoalDaysInput = () => {
+    const { value } = $goalDaysInput;
+    return /^\d+$/.test(value) && +value > 2 && +value < 366;
+  };
+  /**
+   * Update new rewards
+   * @param {string} newRewards
+   */
+  const updateRewards = newRewards => {
+    const selected = state.getSelectedGoal();
+    selected.rewards = newRewards;
+    state.saveGoalList();
+  };
+  /**
+   * when toggle event triggered, update achievement status
+   * @param {number} dayNum - toggled day's number
+   */
+  const toggleDay = dayNum => {
+    const selected = state.getSelectedGoal();
+    selected.toggleAchievementOfDay(dayNum);
+    $goalGrid.children[dayNum + 1].classList.toggle('checked');
+    state.saveGoalList();
+    updateProgressBar(selected);
+  };
+
+  const initializeGoalView = () => {
+    state.fetchGoalList();
+    render.goalList(state.getGoalListAll());
+    showSelectedGoalGrid();
+  };
+
+  // Export
+  return () => {
+    initializeGoalView();
+
+    // Event Bindings ------------------------------------------------
+    // Input Goal text event
+    document.querySelector('.goal-input-container').onsubmit = e => {
+      e.preventDefault();
+
+      const goalName = $goalNameInput.value.trim();
+      const goalDays = Counter.get();
+
+      if (goalName && validateGoalDaysInput()) {
+        const newGoal = new Goal({ id: state.generateGoalId(), name: goalName, days: goalDays });
+        state.addGoalToList(newGoal);
+        render.goalList(state.getGoalListAll());
+        $goalNameInput.value = '';
+      } else {
+        alert('올바른 입력값을 입력해주세요');
+      }
+    };
+
+    // Input counters events
+    $goalDaysInput.onblur = () => {
+      const inputCount = +$goalDaysInput.value;
+      $goalDaysInput.value =
+        inputCount > MAX_COUNT_GOAL_DAYS
+          ? MAX_COUNT_GOAL_DAYS
+          : inputCount < MIN_COUNT_GOAL_DAYS
+          ? MIN_COUNT_GOAL_DAYS
+          : inputCount;
+      Counter.set(+$goalDaysInput.value);
+    };
+
+    document.querySelector('.increase').onclick = () => {
+      $goalDaysInput.value = Counter.increase();
+    };
+
+    document.querySelector('.decrease').onclick = () => {
+      $goalDaysInput.value = Counter.decrease();
+    };
+
+    // Goal List event
+    $goalList.onclick = ({ target }) => {
+      if (!target.closest('li')) return;
+
+      const selected = target.closest('li');
+
+      [...$goalList.children].forEach(goalListItem => {
+        goalListItem.classList.toggle('active', selected.dataset.id === goalListItem.dataset.id);
+      });
+
+      const deletButton = selected.querySelector('.goal-delete');
+
+      deletButton.classList.add('boing');
+
+      setTimeout(() => {
+        deletButton.classList.remove('boing');
+      }, 1800);
+
+      state.setSelectedGoal(+selected.dataset.id);
+      showSelectedGoalGrid();
+
+      if (target.matches('.goal-delete > i')) {
+        state.deleteGoal(+selected.dataset.id);
+        render.goalList(state.getGoalListAll());
+        render.goalGridItem(SAMPLE_GOAL_OBJECT);
+      }
+    };
+
+    // Goal Grid event
+    $goalGrid.onclick = e => {
+      if (!e.target.classList.contains('day-button')) return;
+      toggleDay(+e.target.textContent - 1);
+    };
+
+    // Goal Rewards event
+    $goalRewards.onsubmit = e => {
+      e.preventDefault();
+      updateRewards(e.target.lastElementChild.value);
+    };
   };
 })();
 
-// DOM Nodes
-const $goalInputContainer = document.querySelector('.goal-input-container');
-const $goalNameInput = document.getElementById('goal-name-input');
-const $increase = document.querySelector('.increase');
-const $decrease = document.querySelector('.decrease');
-const $goalDaysInput = document.getElementById('goal-days-input');
-const $goalList = document.querySelector('.goal-list');
-const $goalGrid = document.querySelector('.goal-grid');
-const $goalRewards = document.querySelector('.goal-rewards');
-
-// Event Bindings
-window.addEventListener('DOMContentLoaded', () => {
-  state.fetchGoalList();
-  goalView.render.goalList(state.getGoalListAll());
-  goalView.showSelectedGoalGrid();
-});
-
-$goalInputContainer.onsubmit = e => {
-  e.preventDefault();
-
-  const goalName = $goalNameInput.value.trim();
-  const goalDays = Counter.get();
-
-  if (goalName && goalView.validateGoalDaysInput()) {
-    const newGoal = new Goal({ id: state.generateGoalId(), name: goalName, days: goalDays });
-    state.addGoalToList(newGoal);
-    goalView.render.goalList(state.getGoalListAll());
-    $goalNameInput.value = '';
-  } else {
-    alert('올바른 입력값을 입력해주세요');
-  }
-};
-
-$goalDaysInput.onblur = () => {
-  const inputCount = +$goalDaysInput.value;
-  $goalDaysInput.value =
-    inputCount > MAX_COUNT_GOAL_DAYS
-      ? MAX_COUNT_GOAL_DAYS
-      : inputCount < MIN_COUNT_GOAL_DAYS
-      ? MIN_COUNT_GOAL_DAYS
-      : inputCount;
-  Counter.set(+$goalDaysInput.value);
-};
-
-$decrease.onclick = () => {
-  $goalDaysInput.value = Counter.decrease();
-};
-
-$increase.onclick = () => {
-  $goalDaysInput.value = Counter.increase();
-};
-
-$goalList.onclick = ({ target }) => {
-  if (!target.closest('li')) return;
-
-  const selected = target.closest('li');
-
-  [...$goalList.children].forEach(goalListItem => {
-    goalListItem.classList.toggle('active', selected.dataset.id === goalListItem.dataset.id);
-  });
-
-  const deletButton = selected.querySelector('.goal-delete');
-
-  deletButton.classList.add('boing');
-
-  setTimeout(() => {
-    deletButton.classList.remove('boing');
-  }, 1800);
-
-  state.setSelectedGoal(+selected.dataset.id);
-  goalView.showSelectedGoalGrid();
-
-  if (target.matches('.goal-delete > i')) {
-    state.deleteGoal(+selected.dataset.id);
-    goalView.render.goalList(state.getGoalListAll());
-    goalView.render.goalGridItem(SAMPLE_GOAL_OBJECT);
-  }
-};
-
-$goalRewards.onsubmit = e => {
-  e.preventDefault();
-  goalView.updateRewards(e.target.lastElementChild.value);
-};
-
-$goalGrid.onclick = e => {
-  if (!e.target.classList.contains('day-button')) return;
-  goalView.toggleDay(+e.target.textContent - 1);
-};
+export default goalView;
