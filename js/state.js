@@ -62,9 +62,8 @@ const state = (() => {
       return Math.max(...goalDataList.map(goal => goal.id), 0) + 1;
     },
     fetchGoalList() {
-      updateGoalList(
-        getParsedFromJSON('goal-list').map(goalObject => new Goal({ ...goalObject })) || [],
-      );
+      const parsed = getParsedFromJSON('goal-list');
+      updateGoalList(parsed ? parsed.map(goalObject => new Goal({ ...goalObject })) : []);
     },
     deleteGoal(goalId) {
       updateGoalList([...goalDataList.filter(goal => goal.id !== goalId)]);
