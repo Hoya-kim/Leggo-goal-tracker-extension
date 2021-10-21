@@ -2,10 +2,25 @@ import { getParsedFromJSON, setDataToJSON, getRandomNumber } from './utils/helpe
 import { IMAGE_SPRITE_NUMBERS_OF_EYES, IMAGE_SPRITE_NUMBERS_OF_MOUTH } from './utils/constants.js';
 
 const userEntry = (() => {
-  let nicknameWords = {};
-  let avatarComponentInfo = {};
+  let nicknameWords = {
+    adjective: null,
+    noun: null,
+  };
 
-  const currentUserInfo = {};
+  let avatarComponentInfo = {
+    color: null,
+    eyes: null,
+    mouth: null,
+  };
+
+  let currentUserInfo = {
+    color: null,
+    eyes: null,
+    mouth: null,
+    nickname: null,
+  };
+
+  let isMoving = false;
 
   const getRandomNickname = () => {
     const adjectiveOfNickname =
@@ -14,25 +29,41 @@ const userEntry = (() => {
     return adjectiveOfNickname + ' ' + nounOfNickname;
   };
 
-  const setNickname = toChangeAvatar => {
-    const nickname = toChangeAvatar ? getParsedFromJSON('userInfo').nickname : getRandomNickname();
+  const setNickname = isRequestedToChangeUserInfo => {
+    const nickname = isRequestedToChangeUserInfo
+      ? getRandomNickname()
+      : getParsedFromJSON('userInfo').nickname;
 
     document.getElementById('nickname').value = nickname;
     currentUserInfo.nickname = nickname;
   };
 
+  const getDifferentNumber = (num = 0, maxNum) => {
+    let differentNumber = num;
+
+    while (num === differentNumber) {
+      differentNumber = getRandomNumber(maxNum);
+    }
+
+    return differentNumber;
+  };
+
   /**
    * Set new Avartar or Get Avartar infomation from local stoage
-   * @param {boolean} toChangeAvatar
+   * @param {boolean} isRequestedToChangeUserInfo
    * @todo parameter 이름 변경
    */
-  const setAvatar = toChangeAvatar => {
-    const { color, eyes, mouth } = getParsedFromJSON('userInfo');
-    const newColor = toChangeAvatar
-      ? color
-      : avatarComponentInfo.color[getRandomNumber(avatarComponentInfo.color.length)];
-    const eyesIndex = toChangeAvatar ? eyes : getRandomNumber(IMAGE_SPRITE_NUMBERS_OF_EYES);
-    const mouthIndex = toChangeAvatar ? mouth : getRandomNumber(IMAGE_SPRITE_NUMBERS_OF_MOUTH);
+  const setAvatar = isRequestedToChangeUserInfo => {
+    const { color, eyes, mouth } = currentUserInfo;
+    const newColor = isRequestedToChangeUserInfo
+      ? avatarComponentInfo.color[getRandomNumber(avatarComponentInfo.color.length)]
+      : color;
+    const eyesIndex = isRequestedToChangeUserInfo
+      ? getDifferentNumber(eyes, IMAGE_SPRITE_NUMBERS_OF_EYES)
+      : eyes;
+    const mouthIndex = isRequestedToChangeUserInfo
+      ? getDifferentNumber(mouth, IMAGE_SPRITE_NUMBERS_OF_MOUTH)
+      : mouth;
 
     const rootStyle = document.documentElement.style;
     // 아바타
@@ -43,11 +74,7 @@ const userEntry = (() => {
     rootStyle.setProperty('--eyes-number', IMAGE_SPRITE_NUMBERS_OF_EYES - 1);
     rootStyle.setProperty('--mouth-number', IMAGE_SPRITE_NUMBERS_OF_MOUTH - 1);
 
-    [currentUserInfo.color, currentUserInfo.eyes, currentUserInfo.mouth] = [
-      newColor,
-      eyesIndex,
-      mouthIndex,
-    ];
+    currentUserInfo = { ...currentUserInfo, color: newColor, eyes: eyesIndex, mouth: mouthIndex };
   };
 
   return {
@@ -58,7 +85,10 @@ const userEntry = (() => {
           nicknameWords = json;
         })
         .then(() => {
-          setNickname(!!getParsedFromJSON('userInfo'));
+          currentUserInfo = getParsedFromJSON('userInfo')
+            ? getParsedFromJSON('userInfo')
+            : { ...currentUserInfo, nickname: '' };
+          setNickname(!getParsedFromJSON('userInfo'));
         });
     },
     fetchAndInitAvatarInfo() {
@@ -68,7 +98,10 @@ const userEntry = (() => {
           avatarComponentInfo = json;
         })
         .then(() => {
-          setAvatar(!!getParsedFromJSON('userInfo'));
+          currentUserInfo = getParsedFromJSON('userInfo')
+            ? getParsedFromJSON('userInfo')
+            : { ...currentUserInfo, color: {}, eyes: 0, mouth: 0 };
+          setAvatar(!getParsedFromJSON('userInfo'));
         });
     },
     submitUserInfo() {
@@ -76,8 +109,12 @@ const userEntry = (() => {
       window.location.href = './pages/main.html';
     },
     rerollUserInfo() {
-      setNickname(false);
-      setAvatar(false);
+      if (isMoving) return;
+      setNickname(true);
+      setAvatar(true);
+    },
+    setMovingStatus(newMovingStatus) {
+      isMoving = newMovingStatus;
     },
   };
 })();
@@ -95,3 +132,9 @@ window.onkeyup = ({ key }) => {
 
 document.querySelector('.submit').onclick = userEntry.submitUserInfo;
 document.querySelector('.reroll').onclick = userEntry.rerollUserInfo;
+document.querySelector('.avatar-eyes').ontransitionrun = () => {
+  userEntry.setMovingStatus(true);
+};
+document.querySelector('.avatar-mouth').ontransitionend = () => {
+  userEntry.setMovingStatus(false);
+};
