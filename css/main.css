@@ -145,7 +145,7 @@ a {
 }
 
 .nav-menu {
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
   text-align: center;
   width: 100%;
@@ -155,12 +155,23 @@ a {
   color: black;
   line-height: 20px;
   transition: all 0.3s;
-  text-shadow: 0 0 20px white;
 }
+
+.nav-menu:hover {
+  transition: all 0.3s;
+  background-color: var(--primary-color);
+  font-size: 24px;
+}
+
 .nav-menu-select {
-  font-size: 23px;
+  font-size: 22px;
+  transition: all 0.3s;
   background-color: var(--secondary-color);
-  color: white;
+  color: black;
+}
+
+.nav-menu-commingsoon {
+  color: gray;
 }
 
 .goal-container {
