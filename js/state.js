@@ -66,7 +66,9 @@ const state = (() => {
         getParsedFromJSON('goal-list').map(goalObject => new Goal({ ...goalObject })) || [],
       );
     },
-    // deleteGoal(goalId) {},
+    deleteGoal(goalId) {
+      updateGoalList([...goalDataList.filter(goal => goal.id !== goalId)]);
+    },
   };
 })();
 

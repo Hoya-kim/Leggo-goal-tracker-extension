@@ -67,7 +67,7 @@
                 name="goal-days"
                 id="goal-days-input"
                 autocomplete="off"
-                placeholder="3 ~ 99"
+                placeholder="3 ~ 365"
               />
               <div class="goal-days-control">
                 <button class="increase" type="button"><i class="bx bxs-up-arrow"></i></button>
@@ -81,7 +81,7 @@
                 name="goal-name"
                 id="goal-name-input"
                 autocomplete="off"
-                placeholder="6시이후금식🚫(Enter⮐)"
+                placeholder="6시이후금식🚫"
               />
               <button class="badge">Enter</button>
             </div>
@@ -134,6 +134,9 @@
           </div>
         </div>
         <div class="goal-grid-container">
+          <div class="hovered-info">
+            <div class="info-badge">Select Your Goal!</div>
+          </div>
           <div class="goal-grid">
             <!-- goal-grid -->
           </div>
@@ -143,7 +146,8 @@
               type="text"
               name="goal-rewards"
               id="goal-rewards"
-              placeholder="보상으로 폭식하기!🍖 (Enter ⮐)"
+              placeholder="보상으로 폭식하기!🍖"
+              autocomplete="off"
             />
           </form>
         </div>

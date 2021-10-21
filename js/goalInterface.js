@@ -11,7 +11,7 @@ const $goalListContainer = document.querySelector('.goal-list-container');
 const $goalList = document.querySelector('.goal-list');
 
 const render = goalDataList => {
-  if (goalDataList.length) $goalListContainer.firstElementChild.classList.add('hidden');
+  $goalListContainer.firstElementChild.classList.toggle('hidden', goalDataList.length);
 
   $goalList.innerHTML = goalDataList
     .map(
@@ -57,7 +57,7 @@ const Counter = (() => {
 const goalDaysInputValidation = () => {
   const { value } = $goalDaysInput;
 
-  return /^\d+$/.test(value) && +value > 2 && +value < 100;
+  return /^\d+$/.test(value) && +value > 2 && +value < 366;
 };
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -88,20 +88,33 @@ $increase.onclick = Counter.increase;
 $goalList.onclick = ({ target }) => {
   if (!target.closest('li')) return;
 
+  const selected = target.closest('li');
+
   [...$goalList.children].forEach(goalListItem => {
-    goalListItem.classList.toggle(
-      'active',
-      target.closest('li').dataset.id === goalListItem.dataset.id,
-    );
+    goalListItem.classList.toggle('active', selected.dataset.id === goalListItem.dataset.id);
   });
 
-  state.setSelectedGoal(+target.closest('li').dataset.id);
+  const deletButton = selected.querySelector('.goal-delete');
+
+  deletButton.classList.add('boing');
+
+  setTimeout(() => {
+    deletButton.classList.remove('boing');
+  }, 1800);
+
+  state.setSelectedGoal(+selected.dataset.id);
   renderSelectedGoal();
+
+  if (target.matches('.goal-delete > i')) {
+    state.deleteGoal(+selected.dataset.id);
+    render(state.getGoalListAll());
+    renderGridItem(INITIAL_GOAL_OBJECT);
+  }
 };
 
 // constant
 const INITIAL_GOAL_OBJECT = new Goal({
-  id: 1,
+  id: -1,
   name: '',
   days: 30, // num of challenge days
   isAchieve: Array.from({ length: 30 }, () => false),
@@ -128,6 +141,9 @@ const renderGridItem = ({ data }) => {
     .join('');
   $goalGrid.innerHTML = `<div id="goal-grid-start" class="goal-grid-item end-point">Start</div>${buttonsHTML}<div class="goal-grid-item end-point">Finish</div>`;
   $goalRewards.lastElementChild.value = data.rewards;
+
+  const $hoverLabel = document.querySelector('.hovered-info');
+  data.id === -1 ? ($hoverLabel.style.display = 'flex') : ($hoverLabel.style.display = 'none');
 };
 
 /**
