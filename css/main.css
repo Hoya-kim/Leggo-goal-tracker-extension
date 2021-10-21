@@ -11,7 +11,6 @@ header {
 body {
   min-width: 1200px;
   overflow: scroll;
-  opacity: 0;
   font-family: 'Quantico', sans-serif;
 }
 
@@ -355,12 +354,12 @@ button.badge {
 }
 
 .goal-delete {
+  display: none;
   border: 0;
   background: transparent;
   position: absolute;
   top: 19px;
   right: 13px;
-  opacity: 0;
   cursor: pointer;
   font-size: 1.25rem;
   color: inherit;
@@ -377,7 +376,7 @@ button.badge {
 }
 
 .goal-list-item.active .goal-delete {
-  opacity: 1;
+  display: block;
 }
 
 .progress-bar {
@@ -517,6 +516,10 @@ button.badge {
 .day-button:hover:not(:disabled) {
   background-color: var(--primary-color);
   color: #fff;
+}
+.day-button:hover.checked {
+  background-color: transparent;
+  color: var(--primary-color);
 }
 .day-button:disabled {
   cursor: not-allowed;

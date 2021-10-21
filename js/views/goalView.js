@@ -7,6 +7,7 @@ import {
   MAX_COUNT_GOAL_DAYS,
   MIN_COUNT_GOAL_DAYS,
 } from '../utils/constants.js';
+import explode from '../utils/explosion.js';
 
 // constant
 const SAMPLE_GOAL_OBJECT = new Goal({
@@ -28,7 +29,7 @@ const goalView = (() => {
 
   // DOM Nodes for grid
   const $goalGrid = document.querySelector('.goal-grid');
-  const $goalRewards = document.querySelector('.goal-rewards');
+  const $goalRewardsInput = document.querySelector('.goal-rewards > input');
 
   /**
    * Render functions
@@ -86,7 +87,7 @@ const goalView = (() => {
         )
         .join('');
       $goalGrid.innerHTML = `<div id="goal-grid-start" class="goal-grid-item end-point">Start</div>${buttonsHTML}<div class="goal-grid-item end-point">Finish</div>`;
-      $goalRewards.lastElementChild.value = rewards;
+      $goalRewardsInput.value = rewards;
 
       const $hoverLabel = document.querySelector('.hovered-info');
       data.id === -1 ? ($hoverLabel.style.display = 'flex') : ($hoverLabel.style.display = 'none');
@@ -148,11 +149,15 @@ const goalView = (() => {
     showSelectedGoalGrid();
   };
 
-  // Export
+  // Export ------------------------------------------------------------------------------------
+  /**
+   * Initailize goal view
+   * @type {() => {}}
+   */
   return () => {
     initializeGoalView();
 
-    // Event Bindings ------------------------------------------------
+    // Event Bindings --------------------------------------------------------------------------
     // Input Goal text event
     document.querySelector('.goal-input-container').onsubmit = e => {
       e.preventDefault();
@@ -172,7 +177,7 @@ const goalView = (() => {
 
     // Input counters events
     $goalDaysInput.onblur = () => {
-      const inputCount = +$goalDaysInput.value;
+      const inputCount = +$goalDaysInput.value || 7;
       $goalDaysInput.value =
         inputCount > MAX_COUNT_GOAL_DAYS
           ? MAX_COUNT_GOAL_DAYS
@@ -222,12 +227,25 @@ const goalView = (() => {
     $goalGrid.onclick = e => {
       if (!e.target.classList.contains('day-button')) return;
       toggleDay(+e.target.textContent - 1);
+
+      // explode animation
+      const primary = getComputedStyle(document.documentElement).getPropertyValue(
+        '--primary-color',
+      );
+      const secondary = getComputedStyle(document.documentElement).getPropertyValue(
+        '--secondary-color',
+      );
+      explode(e.pageX, e.pageY, [primary, secondary]);
     };
 
     // Goal Rewards event
-    $goalRewards.onsubmit = e => {
+    document.querySelector('.goal-rewards').onsubmit = e => {
       e.preventDefault();
       updateRewards(e.target.lastElementChild.value);
+    };
+
+    $goalRewardsInput.onblur = e => {
+      updateRewards(e.target.value);
     };
   };
 })();

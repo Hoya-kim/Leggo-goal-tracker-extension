@@ -123,6 +123,10 @@ const userEntry = (() => {
 window.addEventListener('DOMContentLoaded', () => {
   userEntry.fetchAndInitNickname();
   userEntry.fetchAndInitAvatarInfo();
+
+  setTimeout(() => {
+    document.body.style.opacity = 1;
+  }, 300);
 });
 
 window.onkeyup = ({ key }) => {

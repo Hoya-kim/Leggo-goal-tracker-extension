@@ -15,6 +15,6 @@ window.addEventListener('DOMContentLoaded', () => {
   navView();
 
   setTimeout(() => {
-    document.body.style.opacity = 1;
-  }, 300);
+    document.querySelector('.spinner-container').style.display = 'none';
+  }, 800);
 });
