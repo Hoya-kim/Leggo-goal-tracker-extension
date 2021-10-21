@@ -555,6 +555,7 @@ button.badge {
     justify-content: flex-start;
     height: 77vh;
     overflow: scroll;
+    padding-top: 0;
   }
 
   .goal-input-container {
