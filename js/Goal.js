@@ -8,6 +8,7 @@
  * @property {Date} startDate
  */
 
+/** @template [Goal=object] */
 export default class Goal {
   /** @type {number} */
   #id;
@@ -27,7 +28,9 @@ export default class Goal {
   /** @type {Date} */
   #startDate;
 
-  /** @type {(id: number, name: string, days: number) => Goal}} */
+  /**
+   * @param {Goal} goalObject
+   */
   constructor({ id, name, days, isAchieve = [], rewards = '', startDate = new Date() }) {
     this.#id = +id;
     this.#name = name;
@@ -37,6 +40,9 @@ export default class Goal {
     this.#startDate = startDate;
   }
 
+  /**
+   * @returns {number}
+   */
   get id() {
     return this.#id;
   }
