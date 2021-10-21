@@ -57,7 +57,7 @@ const Counter = (() => {
 const goalDaysInputValidation = () => {
   const { value } = $goalDaysInput;
 
-  return /^\d+$/.test(value) && +value > 2 && +value < 100;
+  return /^\d+$/.test(value) && +value > 2 && +value < 366;
 };
 
 window.addEventListener('DOMContentLoaded', () => {
