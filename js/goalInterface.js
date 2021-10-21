@@ -117,8 +117,9 @@ const INITIAL_GOAL_OBJECT = new Goal({
   id: -1,
   name: '',
   days: 30, // num of challenge days
-  isAchieve: Array.from({ length: 30 }, () => false),
+  isAchieve: Array.from({ length: 30 }, (_, idx) => !!(idx % 4) && idx < 11),
   rewards: '',
+  startDate: new Date() - 24 * 60 * 60 * 1000 * 10,
 });
 
 // DOM Nodes
@@ -130,17 +131,23 @@ const $goalRewards = document.querySelector('.goal-rewards');
  * @param {Goal} - response from localStoarge
  */
 const renderGridItem = ({ data }) => {
-  const buttonsHTML = data.isAchieve
+  const { rewards, isAchieve, startDate } = data;
+
+  const today = Math.floor((new Date() - new Date(startDate)) / (24 * 60 * 60 * 1000) + 1);
+
+  const buttonsHTML = isAchieve
     .map(
-      (achievement, idx) => `
-    <button class="goal-grid-item day-button ${achievement ? 'checked' : ''}">
-      ${idx + 1}
-      <div class="day-button-checked"><i class='bx bx-badge-check' ></i></div>
-    </button>`,
+      (achievement, idx) =>
+        `<button class="goal-grid-item day-button ${achievement ? 'checked' : ''}" ${
+          idx + 1 >= today ? '' : 'disabled'
+        }>
+          ${idx + 1}
+          <div class="day-button-checked"><i class='bx bx-badge-check' ></i></div>
+        </button>`,
     )
     .join('');
   $goalGrid.innerHTML = `<div id="goal-grid-start" class="goal-grid-item end-point">Start</div>${buttonsHTML}<div class="goal-grid-item end-point">Finish</div>`;
-  $goalRewards.lastElementChild.value = data.rewards;
+  $goalRewards.lastElementChild.value = rewards;
 
   const $hoverLabel = document.querySelector('.hovered-info');
   data.id === -1 ? ($hoverLabel.style.display = 'flex') : ($hoverLabel.style.display = 'none');

@@ -489,9 +489,12 @@ button.badge {
   border: solid 1px #ccc;
   transition: all 200ms;
 }
-.day-button:hover {
+.day-button:hover:not(:disabled) {
   background-color: var(--primary-color);
   color: #fff;
+}
+.day-button:disabled {
+  cursor: not-allowed;
 }
 .end-point {
   cursor: default;
