@@ -1,12 +1,12 @@
-import Goal from './models/Goal.js';
-import state from './models/state.js';
-import Counter from './models/Counter.js';
-import { getProgressPercent } from './utils/helper.js';
+import Goal from '../models/Goal.js';
+import state from '../models/state.js';
+import Counter from '../models/Counter.js';
+import { getProgressPercent } from '../utils/helper.js';
 import {
   MILLISECOND_IN_A_DAY,
   MAX_COUNT_GOAL_DAYS,
   MIN_COUNT_GOAL_DAYS,
-} from './utils/constants.js';
+} from '../utils/constants.js';
 
 // constant
 const SAMPLE_GOAL_OBJECT = new Goal({

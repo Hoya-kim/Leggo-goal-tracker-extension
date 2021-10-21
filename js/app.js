@@ -1,5 +1,5 @@
-import goalView from './goalView.js';
-import navView from './Nav.js';
+import goalView from './views/goalView.js';
+import navView from './views/nav.js';
 import { getParsedFromJSON } from './utils/helper.js';
 
 const setThemes = () => {
