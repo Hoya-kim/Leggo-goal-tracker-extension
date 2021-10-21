@@ -11,7 +11,7 @@ header {
 body {
   min-width: 1200px;
   overflow: scroll;
-  opacity: 0;
+  /* opacity: 0; */
   font-family: 'Quantico', sans-serif;
 }
 
@@ -172,6 +172,27 @@ a {
 
 .nav-menu-commingsoon {
   color: gray;
+}
+
+.visited-popup {
+  position: absolute;
+  left: 280px;
+  background-color: var(--black);
+  padding: 0 20px;
+  border-left: 5px solid var(--primary-color);
+  top: -80px;
+  transition: all 0.3s;
+  color: white;
+}
+
+.visited-popup-slide {
+  top: 10px;
+}
+
+.visited-popup-highlight {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--primary-color);
 }
 
 .goal-container {
