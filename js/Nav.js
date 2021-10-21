@@ -74,7 +74,7 @@ $toggleButton.addEventListener('click', () => {
 });
 
 window.addEventListener('keyup', e => {
-  if (e.target.classList.contains('input')) return;
+  if (e.target.matches('input')) return;
   if (e.key === '`' || e.key === '₩') {
     setState({ isNavigationOpend: !state.isNavigationOpend, isInitRender: false });
   }
