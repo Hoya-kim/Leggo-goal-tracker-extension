@@ -86,8 +86,8 @@ document.querySelector('.reroll').onclick = () => {
 };
 
 window.onkeyup = e => {
-  if (e.key !== 'Enter' && e.key !== 'r') return;
-  if (e.key === 'r') {
+  if (e.key !== 'Enter' && e.key !== 'r' && e.key !== 'R' && e.key !== 'ㄱ') return;
+  if (e.key === 'r' || e.key === 'R' || e.key === 'ㄱ') {
     setNickname(false);
     setAvatar(false);
   }

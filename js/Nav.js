@@ -11,8 +11,6 @@ const $headerProfile = document.querySelector('.header-profile');
 const $headerNickname = document.querySelector('.header-nickname');
 const $navContainer = document.querySelector('.nav-container');
 const $nav = document.querySelector('nav');
-const $avatarEyes = document.querySelectorAll('.avatar-eyes');
-const $avatarMouth = document.querySelectorAll('.avatar-mouth');
 const $navNickname = document.querySelector('.nav-nickname');
 const $goalContainer = document.querySelector('.goal-container');
 const $navMenuList = document.querySelector('.nav-menu-list');
@@ -47,16 +45,6 @@ const render = () => {
     '--mouth-index',
     JSON.parse(localStorage.getItem('userInfo')).mouth,
   );
-
-  // const { eyes } = JSON.parse(localStorage.getItem('userInfo'));
-  // [...$avatarEyes].forEach($el => {
-  //   $el.style['background-image'] = `url(../images/avatar/${eyes})`;
-  // });
-
-  // const { mouth } = JSON.parse(localStorage.getItem('userInfo'));
-  // [...$avatarMouth].forEach($el => {
-  //   $el.style['background-image'] = `url(../images/avatar/${mouth})`;
-  // });
 
   // 닉네임
   $navNickname.innerHTML = JSON.parse(localStorage.getItem('userInfo')).nickname;

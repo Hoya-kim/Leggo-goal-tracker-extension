@@ -4,11 +4,11 @@
   --mouth-width: 25%;
   --eyes-number: 6;
   --mouth-number: 5;
-  --avatar-transition-time: 0.3s;
   --eyes-index: 0;
   --eyes-number: 0;
   --mouth-index: 0;
   --mouth-number: 0;
+  --avatar-transition-time: 0.3s;
 
   --face-border-color: var(--primary-color);
   --face-color: var(--secondary-color);
@@ -55,7 +55,6 @@
   transform: translate(-50%, -50%);
   background-image: url('../images/avatar/css_sprites_eyes.png');
   background-position-y: calc(100% / var(--eyes-number) * var(--eyes-index));
-  transition: background-position-y var(--avatar-transition-time);
 }
 
 .avatar-mouth {
@@ -66,7 +65,14 @@
   transform: translate(-50%, -50%);
   background-image: url('../images/avatar/css_sprites_mouth.png');
   background-position-y: calc(100% / var(--mouth-number) * var(--mouth-index));
+}
+
+.login-container .avatar-eyes,
+.login-container .avatar-mouth {
   transition: background-position-y var(--avatar-transition-time);
+}
+
+.login-container .avatar-mouth {
   transition-delay: var(--avatar-transition-time);
 }
 
