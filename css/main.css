@@ -12,6 +12,7 @@ body {
   min-width: 1200px;
   overflow: scroll;
   opacity: 0;
+  font-family: 'Quantico', sans-serif;
 }
 
 /* nav */
@@ -78,7 +79,6 @@ a {
   color: var(--white);
   /* line-height: 20px; */
   border-radius: 10px;
-  font-family: 'Quantico', sans-serif;
 }
 
 .nav-bar {
@@ -93,8 +93,8 @@ a {
 
 .toggle {
   position: relative;
-  font-size: 44px;
-  top: 15px;
+  font-size: 36px;
+  top: 20px;
   /* padding: 5px; */
   border: none;
   cursor: pointer;
@@ -145,7 +145,7 @@ a {
 }
 
 .nav-menu {
-  font-size: 22px;
+  font-size: 20px;
   cursor: pointer;
   text-align: center;
   width: 100%;
@@ -160,11 +160,11 @@ a {
 .nav-menu:hover {
   transition: all 0.3s;
   background-color: var(--primary-color);
-  font-size: 24px;
+  font-size: 22px;
+  color: var(--white);
 }
 
 .nav-menu-select {
-  font-size: 22px;
   transition: all 0.3s;
   background-color: var(--secondary-color);
   color: black;
@@ -185,6 +185,7 @@ a {
   left: 50px;
   transition: all 0.3s;
   justify-content: space-evenly;
+  padding-top: 70px;
 }
 
 .active ~ main > .goal-container {
@@ -224,11 +225,11 @@ a {
 }
 
 .goal-input-container label {
-  width: 20.9%;
+  width: 12%;
 }
 
 .goal-input-container input {
-  width: 61%;
+  width: 60%;
 }
 
 .goal-input-container input::placeholder {
@@ -236,7 +237,7 @@ a {
 }
 
 .goal-input-container > div > *:last-child {
-  width: 16.1%;
+  width: 16%;
 }
 
 .goal-days-control {
@@ -259,9 +260,11 @@ button.badge {
   border: 0;
   cursor: pointer;
   font-size: 1rem;
+  padding: 0;
 }
 
 .goal-list-container {
+  margin-top: 60px;
   text-align: center;
   height: 55vh;
   overflow: scroll;
@@ -274,6 +277,7 @@ button.badge {
   flex-direction: column;
   gap: 25px;
   text-align: left;
+  font-size: 1.25rem;
 }
 
 .goal-list-item {
@@ -302,11 +306,12 @@ button.badge {
 
 .goal-name {
   width: 80%;
+  word-break: break-all;
 }
 
 .goal-list-item.active .progress-bar {
   background-color: var(--gray2);
-  height: 30px;
+  height: 35px;
 }
 
 .goal-list-item.active .goal-days {
@@ -332,7 +337,7 @@ button.badge {
   border: 0;
   background: transparent;
   position: absolute;
-  top: 13px;
+  top: 19px;
   right: 13px;
   opacity: 0;
   cursor: pointer;
@@ -375,14 +380,14 @@ button.badge {
   height: 0;
   overflow: hidden;
   position: absolute;
-  top: 8px;
+  top: 6px;
   right: 10px;
   color: var(--black);
   transition: height 0.4s;
 }
 
 .hidden {
-  opacity: 0;
+  display: none;
 }
 
 /* goal-grid */
@@ -433,7 +438,6 @@ button.badge {
   height: 4rem;
   line-height: 3rem;
   background-color: var(--white);
-  font-family: 'Quantico', sans-serif;
   font-size: 2rem;
   text-align: center;
   transform: rotate(-15deg);
@@ -504,7 +508,6 @@ button.badge {
   border-radius: 50%;
   align-self: center;
   color: #fff;
-  font-family: 'Quantico', sans-serif;
 }
 
 .day-button-checked {
@@ -548,7 +551,10 @@ button.badge {
     flex-direction: column;
     width: 100%;
     min-width: 0;
-    padding-top: 155px;
+    margin-top: 115px;
+    justify-content: flex-start;
+    height: 77vh;
+    overflow: scroll;
   }
 
   .goal-input-container {
@@ -562,6 +568,7 @@ button.badge {
 
   .goal-list-container {
     height: 35vh;
+    margin-top: 25px;
   }
 
   .goal-list {
@@ -572,10 +579,18 @@ button.badge {
   }
 
   .goal-list-item {
-    width: 200px;
+    width: 60vw;
+  }
+
+  .goal-grid-container {
+    width: 60vw;
   }
 
   .goal-grid {
     --grid-item-width: 6vw;
+    margin-top: 25px;
   }
+}
+
+@media screen and (max-width: 540px) {
 }
