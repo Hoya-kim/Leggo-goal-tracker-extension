@@ -88,18 +88,25 @@ $increase.onclick = Counter.increase;
 $goalList.onclick = ({ target }) => {
   if (!target.closest('li')) return;
 
+  const selected = target.closest('li');
+
   [...$goalList.children].forEach(goalListItem => {
-    goalListItem.classList.toggle(
-      'active',
-      target.closest('li').dataset.id === goalListItem.dataset.id,
-    );
+    goalListItem.classList.toggle('active', selected.dataset.id === goalListItem.dataset.id);
   });
 
-  state.setSelectedGoal(+target.closest('li').dataset.id);
+  const deletButton = selected.querySelector('.goal-delete');
+
+  deletButton.classList.add('boing');
+
+  setTimeout(() => {
+    deletButton.classList.remove('boing');
+  }, 1800);
+
+  state.setSelectedGoal(+selected.dataset.id);
   renderSelectedGoal();
 
   if (target.matches('.goal-delete > i')) {
-    state.deleteGoal(+target.closest('li').dataset.id);
+    state.deleteGoal(+selected.dataset.id);
     render(state.getGoalListAll());
     renderGridItem(INITIAL_GOAL_OBJECT);
   }

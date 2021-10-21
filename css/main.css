@@ -302,6 +302,21 @@ button.badge {
   opacity: 0;
 }
 
+@keyframes boing {
+  0% {
+    transform: translateX(-2px) rotateZ(-5deg);
+  }
+  25% {
+    transform: translateX(2px) rotateZ(5deg);
+  }
+  50% {
+    transform: translateX(-2px) rotateZ(-5deg);
+  }
+  100% {
+    transform: translateX(0) rotateZ(0);
+  }
+}
+
 .goal-delete {
   border: 0;
   background: transparent;
@@ -315,6 +330,13 @@ button.badge {
   width: 20px;
   height: 20px;
   padding: 0;
+}
+
+.boing {
+  animation-name: boing;
+  animation-duration: 500ms;
+  animation-delay: 400ms;
+  animation-iteration-count: 2;
 }
 
 .goal-list-item.active .goal-delete {
@@ -457,13 +479,16 @@ button.badge {
     flex-direction: column;
     width: 100%;
     min-width: 0;
+    padding-top: 155px;
   }
 
-  .goal-form {
+  .goal-input-container {
+    display: flex;
+    flex-direction: column;
   }
 
   .goal-interface {
-    width: 80vw;
+    width: 60vw;
   }
 
   .goal-list-container {
