@@ -1,3 +1,4 @@
+import { MILLISECOND_IN_A_DAY } from './constants.js';
 // helper, pure functions
 /**
  * Get parsed JSON value from local storage
@@ -27,3 +28,12 @@ export const getProgressPercent = isAchieve =>
  * @returns {number}
  */
 export const getRandomNumber = maxNum => Math.floor(Math.random() * maxNum);
+
+/**
+ * Get difference from two days
+ * @param {Date} from
+ * @param {Date} to
+ * @returns {number}
+ */
+export const getDiffNumOfDays = (from, to) =>
+  Math.floor(Math.abs(to - from) / MILLISECOND_IN_A_DAY);

@@ -1,9 +1,5 @@
-import { getParsedFromJSON } from '../utils/helper.js';
-import {
-  IMAGE_SPRITE_NUMBERS_OF_EYES,
-  IMAGE_SPRITE_NUMBERS_OF_MOUTH,
-  MILLISECOND_IN_A_DAY,
-} from '../utils/constants.js';
+import { getParsedFromJSON, setDataToJSON, getDiffNumOfDays } from '../utils/helper.js';
+import { IMAGE_SPRITE_NUMBERS_OF_EYES, IMAGE_SPRITE_NUMBERS_OF_MOUTH } from '../utils/constants.js';
 
 const navView = (() => {
   let state = {
@@ -46,12 +42,11 @@ const navView = (() => {
   };
 
   const renderVisitedPopup = () => {
-    const diffNumOfDays = (from, to) => Math.abs(to - from) / MILLISECOND_IN_A_DAY;
-    const lastDay = localStorage.getItem('saveDay');
+    const lastDay = getParsedFromJSON('saveDay');
 
     // 시연용 지난 날짜
-    // const diffDay = Math.floor(diffNumOfDays(new Date('2021 / 10 / 10'), new Date()));
-    const diffDay = Math.floor(diffNumOfDays(new Date(lastDay), new Date()));
+    // const diffDay = getDiffNumOfDays(new Date('2021 / 10 / 10'), new Date());
+    const diffDay = getDiffNumOfDays(new Date(lastDay), new Date());
 
     const renderEmoji = emotion => `<i class='visited-popup-highlight bx bxs-${emotion}'></i>`;
 
@@ -71,7 +66,7 @@ const navView = (() => {
 
     $visitedPopup.innerHTML = lastDay ? againVisit : firstVisit;
 
-    localStorage.setItem('saveDay', new Date());
+    setDataToJSON('saveDay', new Date());
 
     // 1초뒤 나오게
     setTimeout(() => {
@@ -96,11 +91,11 @@ const navView = (() => {
     renderVisitedPopup();
   };
 
-  // Export
+  // Export ------------------------------------------------------------------------------------
   return () => {
     initializeNavView();
 
-    // Event bindings
+    // Event bindings --------------------------------------------------------------------------
     $toggleButton.addEventListener('click', () => {
       setState({ isNavigationOpened: !state.isNavigationOpened, isInitRender: false });
     });
