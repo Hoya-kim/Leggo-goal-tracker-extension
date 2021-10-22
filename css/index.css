@@ -8,6 +8,10 @@ body {
   opacity: 0;
 }
 
+.notransition {
+  transition: none !important;
+}
+
 /* 헤더 */
 .header-logo {
   position: absolute;
