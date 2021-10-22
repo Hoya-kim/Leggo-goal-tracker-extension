@@ -24,7 +24,13 @@ const navView = (() => {
   const $navMenuCommingsoon = document.querySelector('.nav-menu-commingsoon');
   const $goalContainer = document.querySelector('.goal-container');
 
-  const { color, eyes, mouth, nickname } = getParsedFromJSON('userInfo');
+  const redirectToEntry = () => {
+    window.location.href = '/';
+  };
+
+  const { color, eyes, mouth, nickname } = getParsedFromJSON('userInfo')
+    ? getParsedFromJSON('userInfo')
+    : redirectToEntry();
 
   const render = () => {
     $headerProfile.style.opacity = +!state.isNavigationOpened;
