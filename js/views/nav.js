@@ -7,6 +7,11 @@ const navView = (() => {
     isInitRender: false,
   };
 
+  const $mobileNavButton = document.querySelector('.mobile-nav-button');
+  $mobileNavButton.addEventListener('click', e => {
+    e.target.closest('.mobile-nav-button').classList.toggle('active');
+  });
+
   const $visitedPopup = document.querySelector('.visited-popup');
   const $headerProfile = document.querySelector('.header-profile');
   const $headerNickname = document.querySelector('.header-nickname');
@@ -42,31 +47,29 @@ const navView = (() => {
   };
 
   const renderVisitedPopup = () => {
-    const lastDay = getParsedFromJSON('saveDay');
-
-    // 시연용 지난 날짜
-    // const diffDay = getDiffNumOfDays(new Date('2021 / 10 / 10'), new Date());
-    const diffDay = getDiffNumOfDays(new Date(lastDay), new Date());
+    const visitedDate = getParsedFromJSON('saveDate');
+    const diffDate = getDiffNumOfDays(new Date('2021 / 10 / 10'), new Date()); // 시연용 지난 날짜
+    // const diffDate = getDiffNumOfDays(new Date(visitedDate), new Date());
 
     const renderEmoji = emotion => `<i class='visited-popup-highlight bx bxs-${emotion}'></i>`;
 
     const firstVisit = `<p class="last-day">첫 방문을 환영합니다! <span class="visited-popup-highlight">${nickname}</span>님! ${renderEmoji(
       'graduation',
     )}</p>`;
-    const basicComment = `<p class="last-day">마지막 방문일로부터 <span class="visited-popup-highlight">${diffDay}일</span> 지났습니다. <span class="visited-popup-highlight">${nickname}</span>님 `;
+    const FixedComment = `<p class="last-day">마지막 방문일로부터 <span class="visited-popup-highlight">${diffDate}일</span> 지났습니다. <span class="visited-popup-highlight">${nickname}</span>님 `;
 
     const addComment =
-      diffDay > 7
+      diffDate > 7
         ? `너무 오랜만이네요! 좀 더 자주 만나요! ${renderEmoji('sad')}</p>`
-        : diffDay > 1
+        : diffDate > 1
         ? `또 오셨네요! 환영합니다! ${renderEmoji('happy-heart-eyes')}</p>`
         : `<p>또 방문해주셨군요! ${renderEmoji('happy-heart-eyes')}</p>`;
 
-    const againVisit = diffDay === 0 ? addComment : basicComment + addComment;
+    const againVisit = diffDate === 0 ? addComment : FixedComment + addComment;
 
-    $visitedPopup.innerHTML = lastDay ? againVisit : firstVisit;
+    $visitedPopup.innerHTML = visitedDate ? againVisit : firstVisit;
 
-    setDataToJSON('saveDay', new Date());
+    setDataToJSON('saveDate', new Date());
 
     // 1초뒤 나오게
     setTimeout(() => {
@@ -86,7 +89,7 @@ const navView = (() => {
   };
 
   const initializeNavView = () => {
-    const isNavigationOpened = JSON.parse(sessionStorage.getItem('isNavigationOpened')) || false;
+    const isNavigationOpened = !!JSON.parse(sessionStorage.getItem('isNavigationOpened'));
     setState({ isNavigationOpened, isInitRender: true });
     renderVisitedPopup();
   };
