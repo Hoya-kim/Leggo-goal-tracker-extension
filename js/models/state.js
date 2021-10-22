@@ -58,13 +58,24 @@ const state = (() => {
     setSelectedGoal(goalId) {
       [selectedGoal] = [...goalDataList.filter(goal => goal.id === goalId)];
     },
+    /**
+     * Get generated new Goal's ID
+     * @returns {number}
+     */
     generateGoalId() {
       return Math.max(...goalDataList.map(goal => goal.id), 0) + 1;
     },
+    /**
+     * Parse Object list to Goal Object list
+     */
     fetchGoalList() {
       const parsed = getParsedFromJSON('goal-list');
       updateGoalList(parsed ? parsed.map(goalObject => new Goal({ ...goalObject })) : []);
     },
+    /**
+     * Delete Goal object matched to ID
+     * @param {number} goalId - Target Goal ID
+     */
     deleteGoal(goalId) {
       updateGoalList([...goalDataList.filter(goal => goal.id !== goalId)]);
     },
