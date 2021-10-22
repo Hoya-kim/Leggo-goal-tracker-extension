@@ -388,7 +388,7 @@ button.badge {
 .progress-bar > .progress-indicator {
   width: 70%;
   height: inherit;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   transition: width 0.4s;
 }
 
