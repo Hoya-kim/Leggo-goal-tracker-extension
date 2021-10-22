@@ -32,6 +32,10 @@ a {
   transition: none !important;
 }
 
+.mobile-nav-wrap {
+  display: none;
+}
+
 .header-logo {
   position: absolute;
   left: 88px;
@@ -173,25 +177,39 @@ a {
   color: gray;
 }
 
+.visited-popup-wrap {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin: 0 30px;
+}
+
 .visited-popup {
+  box-shadow: 5px 5px 0 var(--primary-color);
   position: absolute;
-  left: 280px;
+  /* left: 280px; */
+  margin: 0 20px;
   background-color: var(--black);
   padding: 0 20px;
   border-left: 5px solid var(--primary-color);
-  top: -80px;
+  top: -100px;
   transition: all 0.3s;
   color: white;
+  z-index: 1;
 }
 
 .visited-popup-slide {
-  top: 10px;
+  top: 70px;
 }
 
 .visited-popup-highlight {
   font-size: 20px;
   font-weight: 800;
   color: var(--primary-color);
+}
+
+.last-day {
+  margin: 10px;
 }
 
 .goal-container {
@@ -388,7 +406,7 @@ button.badge {
 .progress-bar > .progress-indicator {
   width: 70%;
   height: inherit;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   transition: width 0.4s;
 }
 
@@ -618,4 +636,94 @@ button.badge {
 }
 
 @media screen and (max-width: 540px) {
+  .visited-popup {
+    display: none;
+  }
+
+  .header-logo {
+    top: 28px;
+    font-size: 30px;
+    left: 80px;
+  }
+
+  .header-profile {
+    opacity: 1 !important;
+    transform: scale(0.9);
+    top: 10px;
+  }
+
+  .nav-bar {
+    display: none;
+  }
+
+  .nav-container {
+    display: none;
+  }
+
+  .mobile-nav-wrap {
+    display: block;
+  }
+
+  .mobile-nav-button {
+    font-size: 45px;
+    padding: 18px;
+    color: var(--primary-color);
+    cursor: pointer;
+    border: none;
+    background-color: white;
+  }
+
+  .mobile-nav-button.active ~ .mobile-nav {
+    display: block;
+    transition: all 0.3s;
+  }
+
+  .mobile-nav {
+    top: 60px;
+    display: none;
+  }
+
+  .mobile-nav-item.select {
+    background-color: var(--black);
+    color: var(--primary-color);
+  }
+
+  .mobile-nav-item {
+    /* width: 100vw;
+    text-align: center; */
+    padding: 30px;
+    /* height: 0; */
+    display: block;
+    background-color: var(--gray2);
+    color: var(--black);
+    transition: all 0.1s;
+    border-bottom: 1px solid var(--gray1);
+  }
+
+  /* .mobile-nav-button.active ~ .mobile-nav .mobile-nav-item {
+    height: 100px;
+    transition: all 0.3s;
+  } */
+
+  .mobile-nav-item:hover {
+    opacity: 0.8;
+    border-bottom: 8px solid var(--primary-color);
+  }
+
+  .mobile-nav-item.commingsoon {
+    cursor: no-drop;
+  }
+
+  .goal-container {
+    left: 0;
+  }
+
+  .active ~ main > .goal-container {
+    width: 100%;
+    left: 0px;
+  }
+
+  .active .nav-container {
+    transform: translate3d(0, 0, 0);
+  }
 }

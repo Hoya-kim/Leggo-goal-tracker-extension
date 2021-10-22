@@ -121,11 +121,17 @@ const userEntry = (() => {
 
 // Event Bindings
 window.addEventListener('DOMContentLoaded', () => {
+  const $avatarEyes = document.querySelector('.avatar-eyes');
+  const $avatarMouth = document.querySelector('.avatar-mouth');
+
   userEntry.fetchAndInitNickname();
   userEntry.fetchAndInitAvatarInfo();
 
+  [$avatarEyes, $avatarMouth].forEach($el => $el.classList.add('notransition'));
+
   setTimeout(() => {
     document.body.style.opacity = 1;
+    [$avatarEyes, $avatarMouth].forEach($el => $el.classList.remove('notransition'));
   }, 300);
 });
 

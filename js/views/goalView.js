@@ -58,7 +58,7 @@ const goalView = (() => {
                     </button>
                 </div>
                 <div class="progress-bar">
-                    <div class="progress-indicator" style="width:${progress}%;"></div>
+                    <div class="progress-indicator" style="opacity: ${progress/100}; width:${progress}%;"></div>
                     <span class="progress-label">${progress}%</span>
                 </div>
             </a>
@@ -102,6 +102,7 @@ const goalView = (() => {
     const progress = getProgressPercent(data.isAchieve);
     const $targetGoalItem = document.querySelector('.goal-list-item.active');
     $targetGoalItem.querySelector('.progress-indicator').style.width = `${progress}%`;
+    $targetGoalItem.querySelector('.progress-indicator').style.opacity = `${progress / 100}`;
     $targetGoalItem.querySelector('.progress-label').textContent = `${progress}%`;
   };
 
