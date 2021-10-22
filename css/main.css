@@ -195,7 +195,7 @@ a {
   top: -100px;
   transition: all 0.3s;
   color: white;
-  z-index: 1;
+  z-index: 10;
 }
 
 .visited-popup-slide {
@@ -430,7 +430,7 @@ button.badge {
 
 /* goal-grid */
 .goal-grid-container {
-  width: 40%;
+  width: 45%;
   min-width: 400px;
   position: relative;
 }
@@ -490,9 +490,9 @@ button.badge {
 
 .goal-grid {
   display: grid;
-  gap: 0.1vw 0.1vw;
-  grid-template-columns: repeat(9, 1fr);
-  --grid-item-width: 3.5vw;
+  gap: 1vh 0.1vw;
+  grid-template-columns: repeat(6, 1fr);
+  --grid-item-width: 5.5vw;
   opacity: 0;
   /* transition: all 300ms; */
   max-height: 65vh;
@@ -526,7 +526,7 @@ button.badge {
   cursor: pointer;
   position: relative;
   background-color: transparent;
-  font-size: 0.85rem;
+  font-size: 1rem;
   padding-top: 5px;
   border: solid 1px #ccc;
   transition: all 200ms;
@@ -553,7 +553,7 @@ button.badge {
 }
 
 .day-button-checked {
-  font-size: 1.5rem;
+  font-size: 2rem;
   position: absolute;
   z-index: -1;
   width: calc(var(--grid-item-width) * 0.55);
@@ -632,6 +632,23 @@ button.badge {
   .goal-grid {
     --grid-item-width: 6vw;
     margin-top: 25px;
+    grid-template-columns: repeat(9, 1fr);
+  }
+
+  .day-button-checked {
+    font-size: 1.75rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .goal-grid {
+    --grid-item-width: 10vw;
+    gap: 2.2vh 0.1vw;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .day-button-checked {
+    font-size: 2rem;
   }
 }
 
@@ -725,5 +742,19 @@ button.badge {
 
   .active .nav-container {
     transform: translate3d(0, 0, 0);
+  }
+
+  .goal-container {
+    margin-top: 25px;
+  }
+
+  .goal-grid {
+    --grid-item-width: 14vw;
+    gap: 1.2vh 0.1vw;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .day-button-checked {
+    font-size: 2rem;
   }
 }
