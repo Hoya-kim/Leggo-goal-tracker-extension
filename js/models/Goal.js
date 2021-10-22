@@ -1,11 +1,11 @@
 /**
  * @typedef {object} Goal
- * @property {number} id
- * @property {string} name
- * @property {number} days
- * @property {Array} isAchieve
- * @property {string} rewards
- * @property {Date} startDate
+ * @property {number} id - Goal's ID (auto-increase)
+ * @property {string} name - Goal's name
+ * @property {number} days - Goal's number of due days
+ * @property {Array<boolean>} isAchieve - Achieved or not on each of days
+ * @property {string} rewards - Goal's rewards
+ * @property {Date} startDate - Goal's enroll(start) date
  */
 
 /** @template [Goal=object] */
