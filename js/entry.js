@@ -79,7 +79,7 @@ const userEntry = (() => {
 
   return {
     fetchAndInitNickname() {
-      fetch('../db/nickname.json')
+      fetch('./../db/nickname.json')
         .then(response => response.json())
         .then(json => {
           nicknameWords = json;
@@ -87,12 +87,12 @@ const userEntry = (() => {
         .then(() => {
           currentUserInfo = getParsedFromJSON('userInfo')
             ? getParsedFromJSON('userInfo')
-            : { ...currentUserInfo, nickname: '' };
+            : currentUserInfo;
           setNickname(!getParsedFromJSON('userInfo'));
         });
     },
     fetchAndInitAvatarInfo() {
-      fetch('../db/avatarComponentInfo.json')
+      fetch('./../db/avatarComponentInfo.json')
         .then(response => response.json())
         .then(json => {
           avatarComponentInfo = json;
@@ -100,7 +100,7 @@ const userEntry = (() => {
         .then(() => {
           currentUserInfo = getParsedFromJSON('userInfo')
             ? getParsedFromJSON('userInfo')
-            : { ...currentUserInfo, color: {}, eyes: 0, mouth: 0 };
+            : currentUserInfo;
           setAvatar(!getParsedFromJSON('userInfo'));
         });
     },
