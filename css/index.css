@@ -36,7 +36,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -60%);
+  transform: translate(-50%, -50%);
 }
 
 /* 닉네임 섹션 */
@@ -65,4 +65,5 @@ body {
   padding: 0 1em;
   height: 3.5em;
   border: none;
+  font-size: 1.1em;
 }
