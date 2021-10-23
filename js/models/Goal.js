@@ -3,12 +3,11 @@
  * @property {number} id - Goal's ID (auto-increase)
  * @property {string} name - Goal's name
  * @property {number} days - Goal's number of due days
- * @property {Array<boolean>} isAchieve - Achieved or not on each of days
- * @property {string} rewards - Goal's rewards
- * @property {Date} startDate - Goal's enroll(start) date
+ * @property {Array<boolean>} [isAchieve=[]] - Achieved or not on each of days
+ * @property {string} [rewards=''] - Goal's rewards
+ * @property {Date} [startDate=new Date()] - Goal's enroll(start) date
  */
 
-/** @template [Goal=object] */
 export default class Goal {
   /** @type {number} */
   #id;

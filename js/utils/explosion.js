@@ -40,7 +40,7 @@ const explode = (() => {
    * Draw explode animation on (x, y) with newColor
    * @param {number} x
    * @param {number} y
-   * @param {?Array<string>=} newColor
+   * @param {Array<string>=} newColor
    */
   return (x, y, newColor) => {
     setColors(newColor || []);
