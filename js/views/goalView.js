@@ -1,5 +1,5 @@
 import Goal from '../models/Goal.js';
-import state from '../models/state.js';
+import state from '../store/state.js';
 import Counter from '../models/Counter.js';
 import { getProgressPercent } from '../utils/helper.js';
 import {

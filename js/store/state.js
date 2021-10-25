@@ -1,4 +1,4 @@
-import Goal from './Goal.js';
+import Goal from '../models/Goal.js';
 import { setDataToJSON, getParsedFromJSON } from '../utils/helper.js';
 
 const state = (() => {
