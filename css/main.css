@@ -653,6 +653,12 @@ button.badge {
 }
 
 @media screen and (max-width: 540px) {
+  body,
+  header {
+    min-width: 440px;
+    position: relative;
+  }
+
   .visited-popup {
     display: none;
   }
@@ -679,6 +685,7 @@ button.badge {
 
   .mobile-nav-wrap {
     display: block;
+    width: 100%;
   }
 
   .mobile-nav-button {
@@ -746,6 +753,10 @@ button.badge {
 
   .goal-container {
     margin-top: 25px;
+  }
+
+  .goal-interface {
+    width: 80%;
   }
 
   .goal-grid {
