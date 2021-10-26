@@ -19,7 +19,6 @@
 ### Goal 설정
 
 ![Main Page](https://user-images.githubusercontent.com/41777022/138927768-10100696-383a-4fc3-9f33-b891717203c9.png)
-)
 
 ---
 
@@ -34,22 +33,22 @@
     </tr>
     <tr align="center">
         <td>
-            <img src="https://github.com/hoya-kim.png?size=100">
+            <img src="https://github.com/hoya-kim.png?size=100" style="width:100px; height:100px;">
             <br>
-            <a href="https://github.com/hoya-kim"><I>Hoya-kim</I></a>
+            <a href="https://github.com/hoya-kim" style="width:100px; height:100px;"><I>Hoya-kim</I></a>
         </td>
         <td>
-            <img src="https://github.com/joker77z.png?size=100">
+            <img src="https://github.com/joker77z.png?size=100" style="width:100px; height:100px;">
             <br>
             <a href="https://github.com/joker77z"><I>joker77z</I></a>
         </td>
         <td>
-            <img src="https://github.com/hhhyyo.png?size=100">
+            <img src="https://github.com/hhhyyo.png?size=100" style="width:100px; height:100px;">
             <br>
             <a href="https://github.com/hhhyyo"><I>hhhyyo</I></a>
         </td>
         <td>
-            <img src="https://github.com/skojphy.png?size=100">
+            <img src="https://github.com/skojphy.png?size=100" style="width:100px; height:100px;">
             <br>
             <a href="https://github.com/skojphy"><I>skojphy</I></a>
         </td>
