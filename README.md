@@ -14,11 +14,19 @@
 
 ### 랜덤 아바타 생성
 
-![Create Avatar](https://user-images.githubusercontent.com/41777022/138927760-8228d275-4e1f-4ba1-b145-33198bb6ac46.png)
+![index](https://user-images.githubusercontent.com/37561621/139051068-816f006a-8a24-4d2c-9952-671b3e7d650c.gif)
+
+### spinner
+
+![spinner](https://user-images.githubusercontent.com/37561621/139051053-d7b27b26-dd9c-4cb9-9462-6c58ae5d9f84.gif)
 
 ### Goal 설정
 
-![Main Page](https://user-images.githubusercontent.com/41777022/138927768-10100696-383a-4fc3-9f33-b891717203c9.png)
+![goal](https://user-images.githubusercontent.com/37561621/139051085-5bab2bbb-bc30-43b4-a550-476075fef73e.gif)
+
+### nav
+
+![nav](https://user-images.githubusercontent.com/37561621/139051080-75ea5a1e-6f8f-4c3e-a973-8e9ee3959a6e.gif)
 
 ---
 
