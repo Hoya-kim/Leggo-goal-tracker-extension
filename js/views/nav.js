@@ -54,8 +54,7 @@ const navView = (() => {
 
   const renderVisitedPopup = () => {
     const visitedDate = getParsedFromJSON('saveDate');
-    const diffDate = getDiffNumOfDays(new Date('2021 / 10 / 10'), new Date()); // 시연용 지난 날짜
-    // const diffDate = getDiffNumOfDays(new Date(visitedDate), new Date());
+    const diffDate = getDiffNumOfDays(new Date(visitedDate), new Date());
 
     const renderEmoji = emotion => `<i class='visited-popup-highlight bx bxs-${emotion}'></i>`;
 
