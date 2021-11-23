@@ -7,20 +7,20 @@
 
 <br>
 
-## Our Goal
+## 💫 Our Goal
 
 - 사용자의 흥미를 유발할 유연한 UI/UX
 - Vanilla JS, Clean code 작성
 - Chrome Extension 제작 및 배포
 
-## 프로젝트 사용기술
+## 🛠 프로젝트 사용기술
 
 - HTML5, CSS3, JavaScript
 - Local Storage, Session Storage
 
 ---
 
-## Focused
+## 🔍 Focused
 
 캡슐화 및 정보은닉
 
@@ -36,13 +36,13 @@ UI/UX (유저 친화적 Interaction)
 
 ---
 
-### Goal Object
+### 📚 Goal Object
 
 - 핵심 데이터 Scheme
 
 ```js
 /**
- * @typedef {object} Goal
+ * @typedef Goal
  * @property {number} id - Goal's ID (auto-increase)
  * @property {string} name - Goal's name
  * @property {number} days - Goal's number of due days
@@ -56,9 +56,9 @@ UI/UX (유저 친화적 Interaction)
 
 <br>
 
-## Main Feature
+## 🪄 Main Feature
 
-### 랜덤 아바타 생성
+### 📌 랜덤 아바타 생성
 
 ![index](https://user-images.githubusercontent.com/37561621/139051068-816f006a-8a24-4d2c-9952-671b3e7d650c.gif)
 
@@ -67,14 +67,14 @@ UI/UX (유저 친화적 Interaction)
 > 이때 생성된 아바타와 닉네임은 로컬 스토리지에 저장하여 메인 페이지에 연동하였으며, 특히 아바타의 색깔은 메인 페이지의 테마 컬러로 사용됩니다.  
 > 아바타의 눈과 입은 **스프라이트 이미지**를 사용하여 구현하였는데, 이를 통해 슬롯처럼 눈과 입이 돌아가는 효과와 **이미지 최적화** 효과를 동시에 얻을 수 있었습니다.
 
-### spinner
+### 📌 spinner
 
 ![spinner](https://user-images.githubusercontent.com/37561621/139051053-d7b27b26-dd9c-4cb9-9462-6c58ae5d9f84.gif)
 
 > 골 트래커 페이지로 진입하게 되면 스피너가 발생합니다.  
 > **로컬 스토리지**를 이용해서 첫 접속 / 당일 재접속 / 하루 경과 / 7일 이상 경과에 따라 문구를 다르게 하여 사용자의 재접속을 유도하였습니다.
 
-### Goal 설정
+### 📌 Goal 설정
 
 ![goal](https://user-images.githubusercontent.com/37561621/139051085-5bab2bbb-bc30-43b4-a550-476075fef73e.gif)
 
@@ -88,14 +88,14 @@ UI/UX (유저 친화적 Interaction)
 >
 > 트래커 하단의 리워드 항목은 유저가 스스로 목표를 달성했을 시 스스로에게 주는 보상을 작성하는 칸입니다. 리워드는 엔터를 입력하거나 포커스를 잃었을 때 저장됩니다.
 
-### 다양한 interaction
+### 📌 다양한 interaction
 
 ![leggo_interaction](https://user-images.githubusercontent.com/41777022/143014852-fd03055f-dbb8-4407-9aa3-ff8ef377ed1f.gif)
 
 > Goal 체크 시, 유저에게 체크를 했다는 타격감을 제공  
 > Goal 리스트 내 체크 percentage를 동적으로 변경
 
-### nav
+### 📌 nav
 
 ![nav](https://user-images.githubusercontent.com/37561621/139051080-75ea5a1e-6f8f-4c3e-a973-8e9ee3959a6e.gif)
 
@@ -104,7 +104,7 @@ UI/UX (유저 친화적 Interaction)
 > 메인에서 아바타 정보와 색상을 받아와서 전체적인 UI색상을 관리할 수 있게 하였습니다.  
 > 반응형 UI를 적용하여 모바일에서는 햄버거 메뉴로 변경되어 상->하 방식으로 메뉴가 나타나도록 하였습니다.
 
-### 반응형 UI
+### 📌 반응형 UI
 
 ![leggo_responsive](https://user-images.githubusercontent.com/41777022/143014879-bb639153-943d-4acf-a82e-da24911e5299.gif)
 
@@ -114,7 +114,7 @@ UI/UX (유저 친화적 Interaction)
 
 ---
 
-[배포 URL](http://leggo.seohey.co.kr/)
+🌎 [배포 URL](http://leggo.seohey.co.kr/)
 
 ![배포 url QR code](https://user-images.githubusercontent.com/41777022/143009141-99eab821-7187-4d5b-a8b7-de8b3aca7c73.png)
 
@@ -122,7 +122,7 @@ UI/UX (유저 친화적 Interaction)
 
 ---
 
-## 팀원
+## 🎓 팀원
 
 <table>
     <tr align="center">
