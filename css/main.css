@@ -494,6 +494,7 @@ button.badge {
   grid-template-columns: repeat(6, 1fr);
   --grid-item-width: 5.5vw;
   opacity: 0;
+  justify-items: center;
   /* transition: all 300ms; */
   max-height: 65vh;
   overflow-y: scroll;
