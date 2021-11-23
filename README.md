@@ -16,6 +16,14 @@
 - Vanilla JS, Clean code 작성
 - Chrome Extension 제작 및 배포
 
+---
+
+🌎 [배포 URL](http://leggo.seohey.co.kr/)
+
+![배포 url QR code](https://user-images.githubusercontent.com/41777022/143009141-99eab821-7187-4d5b-a8b7-de8b3aca7c73.png)
+
+<br>
+
 ## 🛠 프로젝트 사용기술
 
 - HTML5, CSS3, JavaScript
@@ -112,14 +120,6 @@ UI/UX (유저 친화적 Interaction)
 ![leggo_responsive](https://user-images.githubusercontent.com/41777022/143014879-bb639153-943d-4acf-a82e-da24911e5299.gif)
 
 > 모바일 view 대응을 위한 반응형 UI 설계
-
-<br>
-
----
-
-🌎 [배포 URL](http://leggo.seohey.co.kr/)
-
-![배포 url QR code](https://user-images.githubusercontent.com/41777022/143009141-99eab821-7187-4d5b-a8b7-de8b3aca7c73.png)
 
 <br>
 
