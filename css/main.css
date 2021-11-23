@@ -623,7 +623,7 @@ button.badge {
   }
 
   .goal-list-item {
-    width: 60vw;
+    width: 100%;
   }
 
   .goal-grid-container {
