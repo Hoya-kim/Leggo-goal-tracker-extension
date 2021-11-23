@@ -1,4 +1,7 @@
-# Leggo!🌟
+
+
+
+# Leggo! <img src="https://user-images.githubusercontent.com/50583262/143018665-e545dd38-a0ae-4694-9793-6efc7fee637c.png" width="40">
 
 골 트래커(Goal Tracker) 제작 프로젝트
 
