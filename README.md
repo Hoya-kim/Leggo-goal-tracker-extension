@@ -127,33 +127,7 @@ UI/UX (유저 친화적 Interaction)
 
 ## 🎓 팀원
 
-<table>
-    <tr align="center">
-        <td><B>김정호<B></td>
-        <td><B>박태준<B></td>
-        <td><B>이효원<B></td>
-        <td><B>서혜연<B></td>
-    </tr>
-    <tr align="center">
-        <td>
-            <img src="https://github.com/hoya-kim.png?size=100" style="width:100px; height:100px;">
-            <br>
-            <a href="https://github.com/hoya-kim" style="width:100px; height:100px;"><I>Hoya-kim</I></a>
-        </td>
-        <td>
-            <img src="https://github.com/joker77z.png?size=100" style="width:100px; height:100px;">
-            <br>
-            <a href="https://github.com/joker77z"><I>joker77z</I></a>
-        </td>
-        <td>
-            <img src="https://github.com/hhhyyo.png?size=100" style="width:100px; height:100px;">
-            <br>
-            <a href="https://github.com/hhhyyo"><I>hhhyyo</I></a>
-        </td>
-        <td>
-            <img src="https://github.com/skojphy.png?size=100" style="width:100px; height:100px;">
-            <br>
-            <a href="https://github.com/skojphy"><I>skojphy</I></a>
-        </td>
-    </tr>
-</table>
+| 김정호 | 박태준 | 이효원 | 서혜연 |
+| :--------: | :--------: | :--------: | :--------: |
+| [@hoya-kim](https://github.com/hoya-kim) | [@joker77z](https://github.com/joker77z) | [@hhhyyo](https://github.com/hhhyyo) | [@skojphy](https://github.com/skojphy) |
+| <img src="https://avatars.githubusercontent.com/hoya-kim" width="100">     | <img src="https://avatars.githubusercontent.com/joker77z" width="100">      | <img src="https://avatars.githubusercontent.com/hhhyyo" width="100">      | <img src="https://avatars.githubusercontent.com/skojphy" width="100"> |
